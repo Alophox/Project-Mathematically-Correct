@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/Project-Mathematically-Correct/static/css/main.6ff89b54.css",
-    "main.js": "/Project-Mathematically-Correct/static/js/main.153bae5a.js",
+    "main.js": "/Project-Mathematically-Correct/static/js/main.5df40723.js",
     "static/js/787.87e96488.chunk.js": "/Project-Mathematically-Correct/static/js/787.87e96488.chunk.js",
     "static/media/Target_Dummy_TFT_item.webp": "/Project-Mathematically-Correct/static/media/Target_Dummy_TFT_item.dec112fbc6e36b4b7961.webp",
     "static/media/AhriSquare.webp": "/Project-Mathematically-Correct/static/media/AhriSquare.665b421fb8caf54624e0.webp",
@@ -109,11 +109,11 @@
     "index.html": "/Project-Mathematically-Correct/index.html",
     "static/media/Icon_Mana.svg": "/Project-Mathematically-Correct/static/media/Icon_Mana.b4229e663133e9c06403.svg",
     "main.6ff89b54.css.map": "/Project-Mathematically-Correct/static/css/main.6ff89b54.css.map",
-    "main.153bae5a.js.map": "/Project-Mathematically-Correct/static/js/main.153bae5a.js.map",
+    "main.5df40723.js.map": "/Project-Mathematically-Correct/static/js/main.5df40723.js.map",
     "787.87e96488.chunk.js.map": "/Project-Mathematically-Correct/static/js/787.87e96488.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.6ff89b54.css",
-    "static/js/main.153bae5a.js"
+    "static/js/main.5df40723.js"
   ]
 }
