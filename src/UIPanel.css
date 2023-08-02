@@ -1,0 +1,51 @@
+
+img {
+	height: 100%;
+	pointer-events: none;
+}
+
+.UIPanel {
+	border: 5px solid transparent;
+	padding: 0px;
+	border-image: url(./ui_images/UIBox100.png) 5 fill;
+	box-sizing:border-box;
+}
+.UIPanel.HalfDark {
+	border-image: url(./ui_images/UIBox100Dark.png) 5 fill;
+}
+.UIPanel.FullDark {
+	border-image: url(./ui_images/UIBox255Dark.png) 5 fill;
+}
+.UITextInput {
+	border: 5px solid transparent;
+	padding: 0px;
+	border-image: url(./ui_images/UIBox255.png) 5 fill;
+	box-sizing:border-box;
+	background-color: rgba(128,128,128,0);
+}
+
+.UIPanel.HorizonBorder {
+	border-left: 0px solid transparent;
+	border-right: 0px solid transparent;
+}
+
+.TTPanel {
+	border: 5px solid transparent;
+	padding: 0px;
+	box-sizing: border-box;
+}
+
+.TTPanel.Dark {
+	border-image: url(./ui_images/UIBoxTT255Dark.png) 5 fill;
+}
+.ImageLabelContainer {
+	display: flex;
+	flex-direction: column;
+	flex-wrap:nowrap;
+	justify-content:flex-start;
+	align-items:center;
+}
+
+.AlignLeft {
+	text-align:left;
+}

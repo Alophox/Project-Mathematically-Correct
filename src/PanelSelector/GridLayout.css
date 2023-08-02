@@ -1,0 +1,13 @@
+.GridContainer {
+	display: grid;
+/*	grid-template-columns: repeat(auto-fit, minmax(80px,1fr));*/ /* expands columns to fit space*/
+	grid-template-columns: repeat(auto-fit, 70px); /*does not expand columns to fit empty space*/
+	grid-auto-rows: 70px;
+	grid-auto-flow:row;
+
+}
+
+.GridItem {
+	width:70px;
+	height:70px;
+}

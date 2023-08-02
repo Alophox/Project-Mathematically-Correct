@@ -1,0 +1,27 @@
+.BuildItemsContainer {
+	display: flex;
+	flex-direction: row;
+	overflow-x: auto;
+	overflow-y:hidden;
+	justify-content:left;
+}
+
+.ItemBox {
+	height: 64px;
+	width: 64px;
+}
+
+.BuildItemContainer {
+	height:64px;
+	width:64px;
+	flex-shrink:0;
+}
+
+.Stacks {
+overflow:clip;
+	margin-top: -1.5em;
+	padding-right:2px;
+	text-align: right;
+	color: #fff;
+	text-shadow: 0 0 4px black, 0 0 4px black, 0 0 4px black, 0 0 4px black;
+}

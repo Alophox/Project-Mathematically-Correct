@@ -1,0 +1,31 @@
+.AdvancedPanel {
+	display: flex;
+	flex-direction: column;
+	height: 100%;
+	flex-grow: 46;
+	flex-basis: 0;
+}
+.StatColumnContainer{
+	display:flex;
+	flex-direction:row;
+	flex-wrap:wrap;
+	overflow:auto;
+	min-height:100px;
+	max-height:30%;
+
+}
+.StatColumnPair{
+	flex-basis:400px;
+	flex-shrink:1;
+	flex-grow:1;
+	display:flex;
+	flex-wrap:wrap;
+}
+.StatRowContainer{
+	flex-grow:1;
+	flex-basis:205px;
+	overflow:clip;
+	white-space:nowrap;
+}
+
+

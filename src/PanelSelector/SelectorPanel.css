@@ -1,0 +1,107 @@
+.SelectorPanel {
+	height: 100%;
+	display: flex;
+	flex-direction: column;
+	flex-grow: 27;
+	flex-basis: 0;
+}
+.ChampionViewer {
+	display: grid;
+	grid-template-columns: 50% 50%;
+}
+
+.Ally {
+	border-image: url(../ui_images/UIBox100Ally.png) 5 fill;
+}
+.Enemy {
+	border-image: url(../ui_images/UIBox100Enemy.png) 5 fill;
+}
+
+.DisplayImageFrame {
+	max-height:69px;
+	width:auto;
+	aspect-ratio:1;
+}
+.DisplayImage {
+	aspect-ratio: 1;
+	height: 100%;
+	width: 100%;
+	max-height: 64px;
+	max-width:64px;
+}
+
+.SelectPanel{
+	height: 100%;
+	display:flex;
+	flex-direction:column;
+	min-height:0;
+/*	padding-bottom:5px;*/
+}
+
+.SelectorButtonContainer{
+	display:flex;
+	flex-wrap:wrap;
+	align-content:stretch;
+}
+.SelectorButton{
+	flex-grow:1;
+}
+
+.ItemGrid{
+	height:100%;
+	overflow:auto;
+}
+
+.FlexGrow {
+	flex-grow: 1;
+}
+
+
+.Label {
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	max-width: 100%;
+	min-height: 1.4em;
+	margin-top: -.2em;
+	font-size: 14px;
+}
+
+.Image {
+	max-height: 100%;
+	min-height: 0;
+	pointer-events: none;
+}
+
+.AttributesPanel {
+	height:100%;
+	display:flex;
+	flex-direction:column;
+	gap:5px;
+	padding:5px;
+}
+
+.AttributeContainer {
+display:flex;
+flex-direction:row;
+align-items:center;
+text-align:left;
+}
+
+.ItemStackLabel {
+	display:flex;
+	flex-direction:row;
+	gap:5px;
+}
+
+.PassiveImage img{
+max-height:2em;
+aspect-ratio:1;
+
+}
+
+.PassiveImage{
+display:flex;
+flex-direction:row;
+align-items:center;
+}

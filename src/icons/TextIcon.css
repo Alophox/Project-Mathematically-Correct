@@ -1,0 +1,12 @@
+.TextIcon {
+	height: 1em;
+	width: 1em;
+	display:block;
+	margin:-3px auto;
+}
+
+.IconContainer{
+width:1em;
+display:inline-block;
+
+}

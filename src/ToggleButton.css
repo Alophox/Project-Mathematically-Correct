@@ -1,0 +1,29 @@
+button {
+	background:none;
+/*	border:none;*/
+	width:100%;
+	min-height:38px; /* height of sorting drop down*/
+}
+.Active {
+	border: 5px solid transparent;
+	padding: 0px;
+	border-image: url(./ui_images/UIBoxTT255.png) 5 fill;
+	box-sizing: border-box;
+}
+.Inactive {
+	border: 5px solid transparent;
+	padding: 0px;
+	border-image: url(./ui_images/UIBox100Dark.png) 5 fill;
+	box-sizing: border-box;
+	color:#ddd ;
+}
+
+/*on mouse down over inactive button*/
+.Inactive:active:hover {
+	border-image: url(./ui_images/UIBox255.png) 5 fill;
+}
+
+/*on mouse down over inactive button*/
+.Inactive:hover {
+	border-image: url(./ui_images/UIBox100.png) 5 fill;
+}

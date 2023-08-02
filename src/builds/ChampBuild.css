@@ -1,0 +1,28 @@
+.StatRowContainer {
+	display:flex;
+	flex-direction:column;
+}
+.StatRow {
+	display: flex;
+	flex-direction: row;
+	gap: 20px;
+	padding: 3px;
+	border-top: 2.5px solid transparent;
+	border-bottom: 2.5px solid transparent;
+}
+.StatRow.Top {
+	border-top: 5px solid transparent;
+}
+.StatRow.Bot {
+	border-bottom: 5px solid transparent;
+}
+.StatContainer {
+	text-align: left;
+	/*	flex: 1 1 0px;*/
+	flex-basis:0px;
+	flex-grow:1;
+	overflow:clip;
+	overflow-clip-margin:16px;
+	height:21px;
+}
+

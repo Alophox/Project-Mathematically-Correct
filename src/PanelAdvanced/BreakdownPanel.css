@@ -1,0 +1,131 @@
+.BreakdownSelector{
+display:flex;
+flex-direction:row;
+flex-wrap:wrap;
+}
+.BreakdownSelectorButton{
+flex-grow:1;
+flex-basis:50px;
+}
+
+.DamageBreakdown {
+	display: flex;
+	flex-direction: column;
+	flex-grow: 1;
+}
+
+.BreakdownText {
+	color: #fff;
+}
+.DescriptionText {
+	text-align:left;
+	padding:5px;
+	white-space:pre-wrap;
+}
+.BreakdownDamageContainer {
+	display:flex;
+	flex-direction:column;
+	flex-grow:1;
+}
+
+.Breakdown{
+	display:flex;
+	flex-direction:column;
+	flex-grow:1;
+	overflow:auto;
+	flex-basis:0;
+}
+
+.BreakdownRow {
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+}
+
+.BreakdownRowCell {
+	flex-basis: 134px;
+	flex-grow: 1;
+}
+
+.DamageShareContainer {
+	display:flex;
+	flex-wrap:wrap;
+	align-content:flex-start;
+	overflow:auto;
+	flex-basis:150px;
+	flex-grow:1;
+}
+
+.FullDamageShare {
+	flex-basis:25%;
+	max-width:25%;
+}
+
+@media ( max-width: 1750px) {
+	.FullDamageShare {
+		flex-basis: 33.333%;
+		max-width: 33.333%;
+	}
+}
+
+@media ( max-width: 1350px) {
+	.FullDamageShare {
+		flex-basis: 50%;
+		max-width: 50%;
+	}
+}
+@media ( max-width: 950px) {
+	.FullDamageShare {
+		flex-basis: 100%;
+		max-width: 100%;
+	}
+}
+
+
+.PSourceText {
+	overflow: clip;
+	white-space: nowrap;
+}
+
+.DamageShare {
+	display: flex;
+	flex-direction: row;
+}
+
+.SSourceText {
+	overflow: clip;
+	white-space: nowrap;
+	text-align: left;
+	width: 40%;
+	flex-grow: 1;
+	text-overflow: ellipsis;
+}
+
+.AmountText {
+	overflow: hidden;
+	white-space: pre-wrap;
+	text-align: right;
+/*	width: 110px;*/
+/*	flex-grow:1;*/
+
+}
+
+
+
+.DamageShare.Total{
+	align-self:stretch;
+}
+
+
+@media ( max-width: 1912px) {
+	.BreakdownRow .BreakdownRowCell.Ability {
+		flex-basis: 33.333%;
+	}
+}
+
+@media ( max-width: 970px) {
+	.BreakdownRow .BreakdownRowCell.Ability {
+		flex-basis: 135px;
+	}
+}
+

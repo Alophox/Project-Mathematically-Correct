@@ -1,0 +1,213 @@
+.ToolTipTrigger{
+	position: relative;
+	display: inline-block;
+	height:100%;
+	width:100%;
+}
+
+.ToolTipArrow {
+	position: absolute;
+	width: -2px;
+	pointer-events: none;
+	top: -500px; /*prevents scrollbar from appearing by putting tooltip off the screen on top*/
+	z-index: 1;
+	transform: rotate(45deg);
+}
+
+.ToolTipContainer {
+	width: 400px;
+	/*	width: 100%;*/
+	padding: 5px;
+	pointer-events: none;
+	position: absolute;
+	z-index: 1;
+	top: -500px; /*prevents scrollbar from appearing by putting tooltip off the screen on top*/
+}
+
+.opacityfalse{
+	opacity: 0;
+}
+.opacitytrue {
+	opacity: 1;
+}
+
+
+.ItemTT{
+	display:flex;
+	max-width:400px;
+/*	height:64px;*/
+	gap:6px;
+	margin-bottom:5px;
+}
+
+.ItemImageFrame {
+	width: 64px;
+	height: 64px;
+}
+.StatImageFrame {
+	width: 30px;
+	height: 30px;
+}
+.StatImage{
+	max-height: 100%;
+	max-width:100%;
+}
+
+.ItemText{
+	display:flex;
+	flex-direction:column;
+	min-width:0;
+}
+
+.TTFont {
+	white-space: pre-wrap;
+	font-size: 1em;
+	text-align: left;
+}
+
+.ItemName{
+	top:0;
+	left:0;
+	text-align:left;
+	font-size:1.5em;
+	margin-top:-4px;
+	max-width:100%;
+	color:#fff;
+}
+
+.FlexGrow{
+	flex-grow:1;
+}
+
+.ItemCost{
+	bottom:0;
+	left:0;
+	text-align:left;
+	flex-grow:0;
+}
+
+
+
+.Passive {
+	padding-left: 1.3em;
+}
+
+
+
+/* text colors in tooltips in game, based off of screenshots */
+/* base tooltip text color */
+.TextTT {
+	color: #a09b8c;
+}
+
+.TextMagic {
+	color: #0AC3DD;
+}
+
+.TextPhysical {
+	color: #F26522;
+}
+
+.TextTrue {
+	color: #CDFAFA;
+}
+
+.TextHeal {
+	color: #60e08f;
+}
+
+.TextShield {
+	color: #4dd0eb;
+}
+
+.TextStats {
+	color: #048699;
+}
+
+.TextPassiveName {
+	color: #BBA068;
+}
+
+.TextMythicPassiveName {
+	color: #FF8800;
+}
+/* the item set build tip */
+.TipTT {
+	color: #0ac8b9;
+}
+/* the mechanics tip */
+.TextAdditionalTip {
+	color: #5a5955;
+	font-style: italic;
+}
+
+/*here are the text colors for various stats, and Base*/
+/*colors grabbed from icon fill colors and text*/
+.Base {
+	color: #fff;
+}
+.Cost {
+	color: #c8aa6e;
+}
+.AttackDamage {
+	color: #ec8d34;
+}
+.AbilityPower {
+	color: #796cff;
+}
+.AttackSpeed {
+	color: #ffe78c;
+}
+.CriticalStrikeChance, .CriticalStrikeDamage {
+	color: #e9341b;
+}
+.Lethality, .ArmorPenetrationFlat, .ArmorPenetrationPercent, .ArmorPenetration {
+	color: #ff6152;
+}
+.MagicPenetrationFlat, .MagicPenetrationPercent, .MagicPenetration {
+	color: #ce69ff;
+}
+.HealShieldPower {
+	color: #63df8c;
+}
+.Health, .BaseHealthRegenPercent, .HealthRegen {
+	color: #219a5b;
+}
+.Armor {
+	color: #f2ba58;
+}
+.MagicResist {
+	color: #52dfff;
+}
+.Mana,.BaseManaRegenPercent,.ManaRegen {
+	color: #189de7;
+}
+.AbilityHaste,.ItemHaste {
+	color: #ece8d3;
+}
+
+.LifeSteal,.OmniVamp,.PhysicalVamp,.SpellVamp {
+	color: #d31e3f;
+}
+.MoveSpeedFlat, .MoveSpeedPercent, .MoveSpeed, .AttackRange {
+	color: #efe7d6;
+}
+
+.Selected {
+	color: #ffffff;
+}
+.Unselected {
+	color: #5a5955;
+}
+
+.Tenacity {
+	color: #8667ff;
+}
+
+.Level {
+	color: #eae1cb;
+}
+
+.OnHit {
+	color: #efe463;
+}

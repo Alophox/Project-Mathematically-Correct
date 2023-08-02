@@ -1,0 +1,1 @@
+export const TICKTIME: number = .033;
