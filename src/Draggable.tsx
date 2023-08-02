@@ -73,7 +73,7 @@ const Draggable: React.FC<DraggableProps> = ({ obj, children, setObj }) => {
 			e.dataTransfer.setData('item', JSON.stringify((obj as typeof UpgradeableItem).baseName ?? (obj as typeof Item).itemName));
 		} else {
 			//console.log((obj as Champion).constructor.name);
-			e.dataTransfer.setData('champ', JSON.stringify((obj as Champion).constructor.name));
+			e.dataTransfer.setData('champ', JSON.stringify((obj as Champion).getClassName));
 		}
 
 	}

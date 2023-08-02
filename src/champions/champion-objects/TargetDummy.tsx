@@ -3,6 +3,9 @@ import { AdaptiveType, Champion, Class, RangeType, ResourceType } from "../Champ
 
 
 export class TargetDummy extends Champion {
+	public get getClassName(): string { return "TargetDummy" };
+
+
 	public readonly championName = "Target Dummy";
 	public readonly epithet = "The Training Dummy";
 	public readonly image = "Target_Dummy_TFT_item.webp";

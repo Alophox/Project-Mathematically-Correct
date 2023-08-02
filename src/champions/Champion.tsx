@@ -64,6 +64,11 @@ export enum Ability {
 }
 
 export abstract class Champion {
+	/**
+	 * MUST SET FOR EACH CHAMPION INDIVIDUALLY
+	 */
+	public get getClassName(): string { return "Champion" } ;
+
 	public readonly championName: string = "?";
 	public readonly epithet: string = "The ?";
 	public readonly image: string = "Target_Dummy_TFT_item.webp";

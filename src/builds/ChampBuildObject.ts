@@ -23,8 +23,16 @@ export class ChampBuildObject {
 		this.update(allyChamp, targetChamp, itemObjArr);
 	}
 
-	public update(allyChamp: Champion, target: Champion, newItems?: Array<{item:Item|undefined}>) {
-		let champObj: Champion = this.isEnemy ? allyChamp : new (ChampionObjects[allyChamp.constructor.name as keyof typeof ChampionObjects])();
+	public update(allyChamp: Champion, target: Champion, newItems?: Array<{ item: Item | undefined }>) {
+		//console.log(allyChamp.constructor.name as keyof typeof ChampionObjects + " | " + (ChampionObjects) + " | " + (ChampionObjects[allyChamp.constructor.name as keyof typeof ChampionObjects]) + " | " + allyChamp);
+		/**
+		 * while this works in development, due to the building process(see minifying) .constructor.name will no longer be the class name, and thus I cannot use it to index ChampionObjects to get the related constructor
+		 */
+		//let champObj: Champion = this.isEnemy ? allyChamp : new ((ChampionObjects[allyChamp.constructor.name as keyof typeof ChampionObjects]))();
+		/**
+		 * so... solution: have classname be a property
+		 */
+		let champObj: Champion = this.isEnemy ? allyChamp : new ((ChampionObjects[allyChamp.getClassName as keyof typeof ChampionObjects]))();
 		champObj.level = allyChamp.level;
 
 		if(newItems !== undefined)

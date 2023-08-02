@@ -122,7 +122,7 @@ export const BuildPanel: React.FC<BuildPanelProps> = ({ allyChamp, enemyChamp, d
 		for (let i = 0; i < generatedBuilds.length; i++) {
 
 
-			let buildItems = new Array<{ item: Item | undefined }>;
+			let buildItems = new Array<{ item: Item | undefined }>();
 			generatedBuilds[i].forEach((item) => {
 				buildItems.push({ item: item });
 			})

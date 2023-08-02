@@ -7,6 +7,9 @@ import { Ability, AdaptiveType, Champion, Class, RangeType, ResourceType } from 
 
 
 export class Ahri extends Champion{
+	public get getClassName(): string { return "Ahri" };
+
+
 	public readonly championName	= "Ahri";
 	public readonly epithet			= "The Nine-Tailed Fox";
 	public readonly image			= "AhriSquare.webp";
