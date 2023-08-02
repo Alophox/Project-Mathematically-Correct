@@ -24,7 +24,7 @@ export class ChampBuildObject {
 	}
 
 	public update(allyChamp: Champion, target: Champion, newItems?: Array<{item:Item|undefined}>) {
-		let champObj: Champion = this.isEnemy ? allyChamp : new ChampionObjects[allyChamp.constructor.name as keyof typeof ChampionObjects]();
+		let champObj: Champion = this.isEnemy ? allyChamp : new (ChampionObjects[allyChamp.constructor.name as keyof typeof ChampionObjects])();
 		champObj.level = allyChamp.level;
 
 		if(newItems !== undefined)
