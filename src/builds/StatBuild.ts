@@ -116,6 +116,9 @@ export class StatBuild {
 			});
 		});
 
+		this.itemPassives.forEach((value: Passive) => {
+			value.trigger(PassiveTrigger.Reset, champ);
+		});
 
 		//champ base stats
 		this.champBaseStats.forEach((amount, stat) => {
