@@ -97,7 +97,7 @@ export const ItemToolTip: React.FC<ItemToolTipProps> = ({ hoverType, item, ttPos
 					</div>
 
 					<div className="ItemText">
-						<div className="ItemName Label TTFont">
+						<div className="ItemName TTFont">
 							{((item as typeof Item) !== undefined) ? ((item as typeof Item).itemName) : "Blank item slot"}
 						</div>
 						<div className="FlexGrow" />
@@ -228,7 +228,7 @@ export const ChampToolTip: React.FC<ChampToolTipProps> = ({ hoverType, champ, tt
 					</div>
 
 					<div className="ItemText">
-						<div className="ItemName Label TTFont">
+						<div className="ItemName TTFont">
 							{(champ).championName}
 						</div>
 						<div className="FlexGrow" />
@@ -289,7 +289,7 @@ export const StatToolTip: React.FC<StatToolTipProps> = ({ hoverType, stat, ttPos
 					</div>
 
 
-					<div className="ItemName Label TTFont">
+					<div className="ItemName TTFont">
 						{StatNameReplace(Stat[stat])}
 					</div>
 

@@ -104,7 +104,7 @@ const BuildItemPanel: React.FC<BuildItemPanelProps> = ({ item, setItem, statBuil
 	//console.log(item)
 	return (
 		<div className={"ItemBox" }>
-			<ItemToolTipTrigger item={item} toSetTTPosition={ToolTipPosition.Left} statBuild={statBuild }>
+			<ItemToolTipTrigger item={item} toSetTTPosition={ToolTipPosition.Right} statBuild={statBuild }>
 				<ItemDroppable setItem={setItem} rerender={rerender} setRerender={setRerender }>
 					{
 						(item !== undefined) ?
