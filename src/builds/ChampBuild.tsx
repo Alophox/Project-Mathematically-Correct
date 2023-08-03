@@ -128,7 +128,7 @@ interface StatViewerProps {
 }
 const StatViewer: React.FC<StatViewerProps> = ({stat, statBuild }) => {
 	return (
-		<StatToolTipTrigger stat={stat} toSetTTPosition={ToolTipPosition.Left } >
+		<StatToolTipTrigger stat={stat} toSetTTPosition={ToolTipPosition.Right } >
 			<StatIcon stat={stat}/> {StatValueConversion(stat, statBuild) }
 		</StatToolTipTrigger>
 	);
