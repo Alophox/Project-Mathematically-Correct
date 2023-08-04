@@ -105,12 +105,12 @@ export class StatBuild {
 			//passives, just in case they changed(ie archangels upgraded to seraphs)
 			(item.item as typeof Item)?.passives?.forEach((value: Passive) => {
 				//console.log(value.passiveName);
-				if (this.itemPassives.has(value.passiveName)) {
-					if (this.itemPassives.get(value.passiveName)?.primarySource !== value.primarySource && this.itemPassives.get(value.passiveName)!.reconcile(value)) {
-						this.itemPassives.set(value.passiveName, value);
+				if (this.itemPassives.has(value.constructor.prototype.passiveName)) {
+					if (this.itemPassives.get(value.constructor.prototype.passiveName)?.primarySource !== value.primarySource && this.itemPassives.get(value.constructor.prototype.passiveName)!.reconcile(value)) {
+						this.itemPassives.set(value.constructor.prototype.passiveName, value);
 					}
 				} else {
-					this.itemPassives.set(value.passiveName, value);
+					this.itemPassives.set(value.constructor.prototype.passiveName, value);
 				}
 					
 			});

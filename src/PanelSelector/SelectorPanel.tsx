@@ -628,8 +628,9 @@ export const ItemStackInput = (props: ItemStackInputProps) => {
 				</span>
 				
 				{/** @todo: actually put passive name here, instead of class name... somehow. will require refactor of a few files */ }
+				{/** @todo I don't know if making a new object is really any better just to read passive name is any better... */ }
 				<span>
-					{StatNameReplace(props.itemPassive.name) + " stacks(max " + props.itemPassive.MAXSTACKS + ")"}
+					{StatNameReplace( new props.itemPassive("").passiveName) + " stacks(max " + props.itemPassive.MAXSTACKS + ")"}
 				</span>
 			</label>
 			<span className="FlexGrow" />

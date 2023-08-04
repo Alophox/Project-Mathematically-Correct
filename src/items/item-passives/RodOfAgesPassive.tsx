@@ -11,7 +11,6 @@ export class RodOfAgesPassive extends Passive {
 	static image = "Rod_of_Ages_item_HD.webp";
 	additionalTip = "Eternity tooltip reflects this increase when it is applied.";
 	public static INITIALSTACKS = 10;
-	currentStacks = RodOfAgesPassive.INITIALSTACKS;
 	public static MAXSTACKS = 10;
 
 	private secondarySourceName = "Stacking "
