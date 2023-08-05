@@ -1,10 +1,21 @@
 {
   "files": {
     "main.css": "/Project-Mathematically-Correct/static/css/main.ece5cf07.css",
-    "main.js": "/Project-Mathematically-Correct/static/js/main.83316331.js",
+    "main.js": "/Project-Mathematically-Correct/static/js/main.fabc9229.js",
     "static/js/787.87e96488.chunk.js": "/Project-Mathematically-Correct/static/js/787.87e96488.chunk.js",
+    "static/media/AsheSquare.webp": "/Project-Mathematically-Correct/static/media/AsheSquare.4cf2ac078e958d5244e3.webp",
+    "static/media/AnnieSquare.webp": "/Project-Mathematically-Correct/static/media/AnnieSquare.7bd22c3eda88db6ac1a4.webp",
     "static/media/Target_Dummy_TFT_item.webp": "/Project-Mathematically-Correct/static/media/Target_Dummy_TFT_item.dec112fbc6e36b4b7961.webp",
+    "static/media/AniviaSquare.webp": "/Project-Mathematically-Correct/static/media/AniviaSquare.a60a38f152295b8e21ed.webp",
+    "static/media/AzirSquare.webp": "/Project-Mathematically-Correct/static/media/AzirSquare.57d581b716f10d0e38e1.webp",
     "static/media/AhriSquare.webp": "/Project-Mathematically-Correct/static/media/AhriSquare.665b421fb8caf54624e0.webp",
+    "static/media/AlistarSquare.webp": "/Project-Mathematically-Correct/static/media/AlistarSquare.2094b3a6d0b417f9f147.webp",
+    "static/media/Aurelion_SolSquare.webp": "/Project-Mathematically-Correct/static/media/Aurelion_SolSquare.d17c8984365a18508730.webp",
+    "static/media/AkshanSquare.webp": "/Project-Mathematically-Correct/static/media/AkshanSquare.e02a2d16fc8f2d433beb.webp",
+    "static/media/AkaliSquare.webp": "/Project-Mathematically-Correct/static/media/AkaliSquare.44987e2ae7f221729d06.webp",
+    "static/media/AatroxSquare.webp": "/Project-Mathematically-Correct/static/media/AatroxSquare.21a071105d53442227b8.webp",
+    "static/media/ApheliosSquare.webp": "/Project-Mathematically-Correct/static/media/ApheliosSquare.b67b5d3fae7ac8d4fbbe.webp",
+    "static/media/AmumuSquare.webp": "/Project-Mathematically-Correct/static/media/AmumuSquare.af49470a4708bc77ba0f.webp",
     "static/media/Hextech_Rocketbelt_item.webp": "/Project-Mathematically-Correct/static/media/Hextech_Rocketbelt_item.4df7b0a8087faf6b4636.webp",
     "static/media/Lich_Bane_item.webp": "/Project-Mathematically-Correct/static/media/Lich_Bane_item.a33488a6c01af1c65e2c.webp",
     "static/media/Demonic_Embrace_item.webp": "/Project-Mathematically-Correct/static/media/Demonic_Embrace_item.59391d550da487ffee41.webp",
@@ -109,11 +120,11 @@
     "static/media/Icon_CriticalStrikeChance.svg": "/Project-Mathematically-Correct/static/media/Icon_CriticalStrikeChance.ce7feca51c9fdf9411b0.svg",
     "static/media/Icon_Mana.svg": "/Project-Mathematically-Correct/static/media/Icon_Mana.b4229e663133e9c06403.svg",
     "main.ece5cf07.css.map": "/Project-Mathematically-Correct/static/css/main.ece5cf07.css.map",
-    "main.83316331.js.map": "/Project-Mathematically-Correct/static/js/main.83316331.js.map",
+    "main.fabc9229.js.map": "/Project-Mathematically-Correct/static/js/main.fabc9229.js.map",
     "787.87e96488.chunk.js.map": "/Project-Mathematically-Correct/static/js/787.87e96488.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.ece5cf07.css",
-    "static/js/main.83316331.js"
+    "static/js/main.fabc9229.js"
   ]
 }
