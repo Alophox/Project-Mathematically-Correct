@@ -52,15 +52,6 @@ export class Ahri extends Champion{
 
 	public readonly additionalTip: string = "";
 
-
-	
-	public rankOrder: Array<Ability> = new Array<Ability>(
-		Ability.R,
-		Ability.Q,
-		Ability.W,
-		Ability.E,
-	);
-
 	protected readonly abilityProperties = {
 		P: {
 			NAME: "Essence Theft",

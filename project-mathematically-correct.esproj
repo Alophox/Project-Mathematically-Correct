@@ -12,7 +12,6 @@
     <BuildOutputFolder>$(MSBuildProjectDirectory)\build</BuildOutputFolder>
   </PropertyGroup>
   <ItemGroup>
-    <Folder Include="src\champions\champion-objects\" />
     <Folder Include="src\store\features\" />
   </ItemGroup>
 </Project>

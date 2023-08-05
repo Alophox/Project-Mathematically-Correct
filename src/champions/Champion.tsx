@@ -1,5 +1,3 @@
-import { stat } from "fs";
-import { ChampBuild } from "../builds/ChampBuild";
 import { CC, CrowdControl, NetCrowdControl } from "../builds/CrowdControl";
 import { DamageInstance, DamageTag, DamageType } from "../builds/DamageInstance";
 import { TICKTIME } from "../builds/ServerConstants";
@@ -71,7 +69,7 @@ export abstract class Champion {
 
 	public readonly championName: string = "?";
 	public readonly epithet: string = "The ?";
-	public readonly image: string = "Target_Dummy_TFT_item.webp";
+	public readonly image: string = "default.png";
 	public readonly class: Class = Class.Specialist;
 	public readonly rangeType: RangeType = RangeType.Melee;
 	public readonly adaptiveType: AdaptiveType = AdaptiveType.Physical;

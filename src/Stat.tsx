@@ -44,6 +44,7 @@ export enum Stat {
 	Health,
 	Armor,
 	MagicResist,
+	/**Any resource type will use this when utilized in Champions*/
 	Mana,
 	AbilityHaste,
 	BaseHealthRegenPercent,
