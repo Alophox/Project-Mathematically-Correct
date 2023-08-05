@@ -485,15 +485,18 @@ export abstract class Champion {
 		});
 	}
 
-	public handleDamageInst(damageInst: DamageInstance, time: number) {
+	public handleDamageInst(damageInst: DamageInstance, time: number, canReduce:boolean = true) {
 		//console.log("ability hit: " + damageInst.instName + " for " + damageInst.preMitigation);
 
 		//on ability hit
 
 		//resist
-		this.resistDamageInst(damageInst);
+		if (canReduce) {
+			this.resistDamageInst(damageInst);
+		}
+		
 
-		if (!(damageInst.damageTags & DamageTag.None)) {
+		if (!(damageInst.damageTags === DamageTag.None)) {
 			//damage has been taken
 			this.triggerPassives(PassiveTrigger.OnDamageTaken, time, damageInst);
 			//console.log((damageInst.damageTags & DamageTag.ActiveSpell));
@@ -508,7 +511,6 @@ export abstract class Champion {
 			//on damage
 			damageInst.sourceChamp.triggerPassives(PassiveTrigger.OnDamageDealt, time, damageInst);
 
-			//do damage reduction
 		}
 		
 

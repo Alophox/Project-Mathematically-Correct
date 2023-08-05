@@ -14,7 +14,8 @@ export class Affliction extends Passive {
 	public trigger(trigger: PassiveTrigger, sourceChamp?: Champion, time?: number, damageInst?: DamageInstance): void {
 		if (trigger === PassiveTrigger.OnDamageDealt) {
 			if (damageInst?.damageType === DamageType.Magic) {
-				damageInst!.targetChamp.addBuff(new GrievousWounds(this.primarySource, this.passiveName, time!, this.DURATION, this.GWRATIO, damageInst!.sourceChamp));
+				//console.log("Affliction added");
+				damageInst!.targetChamp.addBuff(new GrievousWounds(this.primarySource, this.passiveName, time!, this.DURATION, this.GWRATIO, sourceChamp!));
 			}
 		}
 	}

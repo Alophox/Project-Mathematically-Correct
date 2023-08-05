@@ -104,13 +104,14 @@ export class StatBuild {
 		this.items.forEach((item) => {
 			//passives, just in case they changed(ie archangels upgraded to seraphs)
 			(item.item as typeof Item)?.passives?.forEach((value: Passive) => {
-				//console.log(value.passiveName);
-				if (this.itemPassives.has(value.constructor.prototype.passiveName)) {
-					if (this.itemPassives.get(value.constructor.prototype.passiveName)?.primarySource !== value.primarySource && this.itemPassives.get(value.constructor.prototype.passiveName)!.reconcile(value)) {
-						this.itemPassives.set(value.constructor.prototype.passiveName, value);
+				
+				if (this.itemPassives.has(value.passiveName)) {
+					if (this.itemPassives.get(value.passiveName)?.primarySource !== value.primarySource && this.itemPassives.get(value.passiveName)!.reconcile(value)) {
+						this.itemPassives.set(value.passiveName, value);
 					}
 				} else {
-					this.itemPassives.set(value.constructor.prototype.passiveName, value);
+					console.log(value.passiveName);
+					this.itemPassives.set(value.passiveName, value);
 				}
 					
 			});
@@ -416,7 +417,7 @@ export class StatBuild {
 
 			DI.modPostMitDamage(1 / duration);
 	//		if(DI.instName === "A")
-	//		console.log(DI.instName + ":");
+			console.log(DI.instName + ":");
 			DI.damageShares.totalStatShares.forEach((share) => {
 				this.addStatShare(Stat.DamagePerSecond, share.amount, false, type, share.primarySource, share.secondarySource);
 				//console.log(share.primarySource + " " + share.secondarySource + " " + (share.amount));

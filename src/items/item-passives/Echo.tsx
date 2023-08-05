@@ -27,7 +27,7 @@ export class Echo extends Passive {
 		switch (trigger) {
 			case PassiveTrigger.IndependentStat:
 				if (this.buffTime !== 0) {
-					statBuild?.addStatShare(Stat.MoveSpeedPercent, this.MSRATIO, false, StatMathType.PercAdditive, this.primarySource, this.passiveName);
+					statBuild?.addStatShare(Stat.MoveSpeedPercent, this.MSRATIO, false, StatMathType.Flat, this.primarySource, this.passiveName);
 				}
 				break;
 			case PassiveTrigger.OnAbilityDamage:

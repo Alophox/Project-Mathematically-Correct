@@ -47,7 +47,6 @@ export class Poise extends Passive {
 			case PassiveTrigger.Reset:
 				this.cooldownTime = 0;
 				this.linger = 0;
-				statBuild!.updateStats(sourceChamp!);
 			//console.log("reset");
 				break;
 		}

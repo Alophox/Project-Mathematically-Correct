@@ -52,7 +52,6 @@ export class SpellDance extends Passive {
 				if (SpellDance.INITIALSTACKS > 0) this.endTime = this.MAXDURATION;
 				this.currentStacks = SpellDance.INITIALSTACKS;
 				this.flatStat = statBuild?.statNetMap.get(Stat.MoveSpeed)?.flatStat ?? 0;
-				statBuild!.updateStats(sourceChamp!);
 				break;
 		}
 	}

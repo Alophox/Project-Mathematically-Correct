@@ -18,13 +18,15 @@ export class Soulrend extends Passive {
 
 	public trigger(trigger: PassiveTrigger, sourceChamp?: Champion, time?: number, damageInst?: DamageInstance): void {
 		let statBuild = sourceChamp!.statBuild;
+
 		switch (trigger) {
 			case PassiveTrigger.IndependentStat:
 				if (this.buffTime !== 0) {
 					statBuild?.addStatShare(Stat.MoveSpeedPercent, this.MSRATIO, false, StatMathType.Flat, this.primarySource, this.passiveName);
 				}
 				break;
-			case PassiveTrigger.OnDamageDealt:
+			case PassiveTrigger.OnAbilityDamage:
+			case PassiveTrigger.OnAttackHit:
 				if (damageInst!.targetChamp.addBuff(new SoulrendDebuff(this.primarySource, time!, this.COOLDOWN * (1 - statBuild!.getCDR(CDRType.Item))))) {
 
 				//	console.log("proc'd " + this.passiveName);

@@ -128,7 +128,7 @@ export const BuildPanel: React.FC<BuildPanelProps> = ({ allyChamp, enemyChamp, d
 			})
 			
 
-//			console.log(buildItems);
+			console.log(buildItems);
 			newBuilds.push(
 				new ChampBuildObject(i+buildKey.current, allyChamp ?? defaultChamp, enemyChamp ?? defaultChamp, buildItems, false)				
 			);
