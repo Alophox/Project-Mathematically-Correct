@@ -899,11 +899,11 @@ export abstract class Champion {
 			this.buffBar.set(source, new Map<string, Passive>());
 		} 
 		//reconcile multiple instances
-		if (this.buffBar.get(source)!.has(buff.constructor.prototype.passiveName)) {
-			this.buffBar.get(source)!.get(buff.constructor.prototype.passiveName)!.reconcile(buff);
+		if (this.buffBar.get(source)!.has(buff.passiveName)) {
+			this.buffBar.get(source)!.get(buff.passiveName)!.reconcile(buff);
 			return false;
 		} else { //else add cause its new
-			this.buffBar.get(source)!.set(buff.constructor.prototype.passiveName, buff);
+			this.buffBar.get(source)!.set(buff.passiveName, buff);
 			return true;
 		}
 
