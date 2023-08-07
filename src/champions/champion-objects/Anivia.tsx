@@ -6,7 +6,7 @@ export class Anivia extends Champion {
 	public get getClassName(): string { return "Anivia" };
 	public readonly championName = "Anivia";
 	public readonly epithet = "The Cryophoenix";
-	public readonly image = "AkshanSquare.webp";
+	public readonly image = "AniviaSquare.webp";
 	public readonly class = Class.Battlemage;
 	public readonly rangeType = RangeType.Ranged;
 	public readonly adaptiveType = AdaptiveType.Magic;

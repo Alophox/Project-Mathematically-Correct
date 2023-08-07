@@ -353,6 +353,7 @@ const ItemSelector: React.FC<ItemSelectorProps> = ({ item, index }) => {
 	return (
 		<ItemToolTipTrigger item={item} toSetTTPosition={ToolTipPosition.Right }>
 			<ItemDraggable item={item}>
+
 				<div className="UIPanel GridItem ImageLabelContainer" key={index}>
 					<div className="Image">
 						<img src={require("../items/item-images/" + (item as typeof Item).image)} alt="" />
@@ -361,6 +362,7 @@ const ItemSelector: React.FC<ItemSelectorProps> = ({ item, index }) => {
 						{(item as typeof Item).itemName}
 					</label>
 				</div>
+
 			</ItemDraggable>
 		</ItemToolTipTrigger>
 		
