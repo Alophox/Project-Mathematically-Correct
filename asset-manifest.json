@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/Project-Mathematically-Correct/static/css/main.ece5cf07.css",
-    "main.js": "/Project-Mathematically-Correct/static/js/main.f09c0dfe.js",
+    "main.js": "/Project-Mathematically-Correct/static/js/main.f1e9b1c8.js",
     "static/js/787.87e96488.chunk.js": "/Project-Mathematically-Correct/static/js/787.87e96488.chunk.js",
     "static/media/AsheSquare.webp": "/Project-Mathematically-Correct/static/media/AsheSquare.4cf2ac078e958d5244e3.webp",
     "static/media/AnnieSquare.webp": "/Project-Mathematically-Correct/static/media/AnnieSquare.7bd22c3eda88db6ac1a4.webp",
@@ -120,11 +120,11 @@
     "static/media/Icon_CriticalStrikeChance.svg": "/Project-Mathematically-Correct/static/media/Icon_CriticalStrikeChance.ce7feca51c9fdf9411b0.svg",
     "static/media/Icon_Mana.svg": "/Project-Mathematically-Correct/static/media/Icon_Mana.b4229e663133e9c06403.svg",
     "main.ece5cf07.css.map": "/Project-Mathematically-Correct/static/css/main.ece5cf07.css.map",
-    "main.f09c0dfe.js.map": "/Project-Mathematically-Correct/static/js/main.f09c0dfe.js.map",
+    "main.f1e9b1c8.js.map": "/Project-Mathematically-Correct/static/js/main.f1e9b1c8.js.map",
     "787.87e96488.chunk.js.map": "/Project-Mathematically-Correct/static/js/787.87e96488.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.ece5cf07.css",
-    "static/js/main.f09c0dfe.js"
+    "static/js/main.f1e9b1c8.js"
   ]
 }
