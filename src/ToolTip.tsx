@@ -19,9 +19,17 @@ export const ToolTip: React.FC<ToolTipProps> = ({ }) => {
 	return (
 		<div className={"tooltippanel"}>
 			{
+				(ttHover.type === ToolTipType.Normal) && (
+					<NormalToolTip
+						description={ttHover.hovered as (string | JSX.Element)}
+						ttPosition={ttHover.position}
+					/>
+				)
+			}
+
+			{
 				(ttHover.type === ToolTipType.Item) && (
 					<ItemToolTip
-						hoverType={ttHover.type}
 						item={ttHover.hovered}
 						ttPosition={ttHover.position}
 						statBuild={ttHover.extra}
@@ -33,7 +41,6 @@ export const ToolTip: React.FC<ToolTipProps> = ({ }) => {
 			{
 				(ttHover.hovered instanceof Champion) && (
 					<ChampToolTip
-						hoverType={ttHover.type}
 						champ={ttHover.hovered}
 						ttPosition={ttHover.position}
 					/>
@@ -43,15 +50,52 @@ export const ToolTip: React.FC<ToolTipProps> = ({ }) => {
 			{
 				(ttHover.type === ToolTipType.Stat) && (
 					<StatToolTip
-						hoverType={ttHover.type}
 						stat={ttHover.hovered as Stat}
 						ttPosition={ttHover.position}
 					/>
 				)
 			}
+
+
 		</div>
 	);
 }
+
+interface NormalToolTipTriggerProps {
+	description: string|JSX.Element,
+	children?: React.ReactNode,
+	toSetTTPosition: ToolTipPosition,
+};
+interface NormalToolTipProps {
+	description: string | JSX.Element,
+	ttPosition: ToolTipPosition,
+};
+
+export const NormalToolTipTrigger: React.FC<NormalToolTipTriggerProps> = ({ children, description, toSetTTPosition }) => {
+	const dispatch = useAppDispatch();
+
+	return (
+		<div className="NormalToolTipTrigger ToolTipTrigger"
+			onMouseEnter={() => { dispatch(setHover(ToolTipType.Normal, description, toSetTTPosition)) }}
+			onMouseLeave={() => { dispatch(setHover(ToolTipType.None, undefined, toSetTTPosition)) }}
+		>
+			{children}
+		</div>
+	);
+};
+export const NormalToolTip: React.FC<NormalToolTipProps> = ({ description, ttPosition }) => {
+	return (
+		<div>
+			<div id={"NormalArrow"} className={"TTPanel Dark ToolTipArrow " + ttPosition }></div>
+			<div id={"NormalTTC"} className={"TTPanel Dark ToolTipContainer " + ttPosition }>
+				<div className="TTFont TextTT">
+					{description}
+				</div>
+			</div>
+
+		</div>
+	);
+};
 
 
 interface ItemToolTipTriggerProps {
@@ -62,7 +106,6 @@ interface ItemToolTipTriggerProps {
 };
 interface ItemToolTipProps {
 	item?: Item,
-	hoverType: ToolTipType,
 	ttPosition: ToolTipPosition,
 	statBuild?: StatBuild,
 };
@@ -83,11 +126,11 @@ export const ItemToolTipTrigger: React.FC<ItemToolTipTriggerProps> = ({ children
 };
 
 
-export const ItemToolTip: React.FC<ItemToolTipProps> = ({ hoverType, item, ttPosition, statBuild }) => {
+export const ItemToolTip: React.FC<ItemToolTipProps> = ({ item, ttPosition, statBuild }) => {
 	return (
 		<div>
-			<div id={"ItemArrow"} className={"TTPanel Dark ToolTipArrow " + ttPosition + " opacity" + (hoverType === ToolTipType.Item)}></div>
-			<div id={"ItemTTC"} className={"TTPanel Dark ToolTipContainer " + ttPosition + " opacity" + (hoverType === ToolTipType.Item)}>
+			<div id={"ItemArrow"} className={"TTPanel Dark ToolTipArrow " + ttPosition }></div>
+			<div id={"ItemTTC"} className={"TTPanel Dark ToolTipContainer " + ttPosition }>
 				<div className="ItemTT">
 					<div className="UIPanel ItemImageFrame">
 						{((item as typeof Item) !== undefined) && (
@@ -201,7 +244,6 @@ interface ChampToolTipTriggerProps {
 };
 interface ChampToolTipProps {
 	champ: Champion,
-	hoverType: ToolTipType,
 	ttPosition: ToolTipPosition,
 };
 
@@ -217,11 +259,11 @@ export const ChampToolTipTrigger: React.FC<ChampToolTipTriggerProps> = ({ childr
 		</div>
 	);
 };
-export const ChampToolTip: React.FC<ChampToolTipProps> = ({ hoverType, champ, ttPosition }) => {
+export const ChampToolTip: React.FC<ChampToolTipProps> = ({ champ, ttPosition }) => {
 	return (
 		<div>
-			<div id={"ChampArrow"} className={"TTPanel Dark ToolTipArrow " + ttPosition + " opacity" + (hoverType === ToolTipType.Champ)}></div>
-			<div id={"ChampTTC" } className={"TTPanel Dark ToolTipContainer " + ttPosition + " opacity" + (hoverType === ToolTipType.Champ)}>
+			<div id={"ChampArrow"} className={"TTPanel Dark ToolTipArrow " + ttPosition }></div>
+			<div id={"ChampTTC" } className={"TTPanel Dark ToolTipContainer " + ttPosition}>
 				<div className="ItemTT">
 					<div className="UIPanel ItemImageFrame">
 						<img src={require("./champions/champion-images/" + (champ).image)} alt="" />
@@ -262,7 +304,6 @@ interface StatToolTipTriggerProps {
 };
 interface StatToolTipProps {
 	stat: Stat,
-	hoverType: ToolTipType,
 	ttPosition: ToolTipPosition,
 };
 
@@ -278,11 +319,11 @@ export const StatToolTipTrigger: React.FC<StatToolTipTriggerProps> = ({ children
 		</div>
 	);
 };
-export const StatToolTip: React.FC<StatToolTipProps> = ({ hoverType, stat, ttPosition }) => {
+export const StatToolTip: React.FC<StatToolTipProps> = ({ stat, ttPosition }) => {
 	return (
 		<div>
-			<div id={"StatArrow"} className={"TTPanel Dark ToolTipArrow " + ttPosition + " opacity" + (hoverType === ToolTipType.Stat)}></div>
-			<div id={"StatTTC"} className={"TTPanel Dark ToolTipContainer " + ttPosition + " opacity" + (hoverType === ToolTipType.Stat)}>
+			<div id={"StatArrow"} className={"TTPanel Dark ToolTipArrow " + ttPosition }></div>
+			<div id={"StatTTC"} className={"TTPanel Dark ToolTipContainer " + ttPosition}>
 				<div className="ItemTT">
 					<div className="StatImageFrame">
 						<img src={require("./icons/stat_icons/Icon_" + StatNameIconReplace(Stat[stat]) + ".svg")} alt="" className="StatImage" />
@@ -312,7 +353,10 @@ $(document).on('mouseenter', '.ToolTipTrigger', function () {
 	//function moveTT() {
 		var tt;
 		var arrow;
-		if ($(_this).hasClass('ItemToolTipTrigger')) {
+		if ($(_this).hasClass('NormalToolTipTrigger')) {
+			tt = $('#NormalTTC');
+			arrow = $('#NormalArrow');
+		}else if ($(_this).hasClass('ItemToolTipTrigger')) {
 			tt = $('#ItemTTC');
 			arrow = $('#ItemArrow');
 		} else if ($(_this).hasClass('ChampToolTipTrigger')) {

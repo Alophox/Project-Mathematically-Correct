@@ -4,7 +4,7 @@ import './SelectorPanel.css';
 import './GridLayout.css';
 import { Item, ItemCategory, ItemType } from '../items/Item';
 import { ItemList } from '../items/ItemList';
-import { ChampToolTipTrigger, ItemToolTipTrigger } from '../ToolTip';
+import { ChampToolTipTrigger, ItemToolTipTrigger, NormalToolTipTrigger } from '../ToolTip';
 import { ChampionList } from '../champions/ChampionList';
 import { Champion } from '../champions/Champion';
 import { TargetDummy } from '../champions/champion-objects';
@@ -624,17 +624,19 @@ export const ItemStackInput = (props: ItemStackInputProps) => {
 	const toChangeTo = useRef(props.itemPassive.INITIALSTACKS);
 	return (
 		<div className="AttributeContainer">
-			<label className="ItemStackLabel">
-				<span className="PassiveImage">
-					<img src={require("../items/item-images/" + props.itemPassive.image)} alt={props.itemPassive.image.replace(/(.wbp)(HD)(item)/,'').replace("_", " ").trimEnd()} />
-				</span>
+			<NormalToolTipTrigger description={new props.itemPassive("").Description() } toSetTTPosition={ToolTipPosition.Bot }>
+				<label className="ItemStackLabel">
+					<span className="PassiveImage">
+						<img src={require("../items/item-images/" + props.itemPassive.image)} alt={props.itemPassive.image.replace(/(.wbp)(HD)(item)/,'').replace("_", " ").trimEnd()} />
+					</span>
 				
-				{/** @todo: actually put passive name here, instead of class name... somehow. will require refactor of a few files */ }
-				{/** @todo I don't know if making a new object is really any better just to read passive name is any better... */ }
-				<span>
-					{StatNameReplace( new props.itemPassive("").passiveName) + " stacks(max " + props.itemPassive.MAXSTACKS + ")"}
-				</span>
-			</label>
+					{/** @todo: actually put passive name here, instead of class name... somehow. will require refactor of a few files */ }
+					{/** @todo I don't know if making a new object is really any better just to read passive name is any better... */ }
+					<span>
+						{StatNameReplace( new props.itemPassive("").passiveName) + " stacks(max " + props.itemPassive.MAXSTACKS + ")"}
+					</span>
+				</label>
+			</NormalToolTipTrigger>
 			<span className="FlexGrow" />
 
 			<input
@@ -686,7 +688,8 @@ export const ItemStackInput = (props: ItemStackInputProps) => {
 				maxLength={5}
 			//size={1}
 
-			/>
+				/>
+			
 		</div>
 	);
 }

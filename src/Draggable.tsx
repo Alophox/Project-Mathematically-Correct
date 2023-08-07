@@ -3,6 +3,8 @@ import { Champion } from './champions/Champion';
 import { Item } from "./items/Item";
 import { UpgradeableItem } from './items/UpgradableItem';
 import { Stat } from './Stat';
+import { setHover, ToolTipPosition, ToolTipType } from './store/features/ttHoverSlice';
+import { useAppDispatch } from './store/hooks';
 
 interface ItemDraggableProps {
 	item: Item,
@@ -48,11 +50,18 @@ const Draggable: React.FC<DraggableProps> = ({ obj, children, setObj }) => {
 	var div: HTMLDivElement;
 	let dimension: number = 54;
 
+	const dispatch = useAppDispatch();
+
 	const isItem = (object: Item | Champion): object is Item => {
 		return (object as typeof Item).itemName !== undefined;
 	}
 
 	function handleDragStart(e: React.DragEvent<HTMLDivElement>) {
+		//prevent the tooltip from being stuck open by closing it
+		//this way it won't overlap with other elements
+		dispatch(setHover(ToolTipType.None, undefined, ToolTipPosition.Left));
+
+
 		//img needs to be rendered somewhere in order for width to work, so we render it inside a div inside the body, off the screen
 		img = document.createElement("img");
 		if (isItem(obj)) {
@@ -89,7 +98,7 @@ const Draggable: React.FC<DraggableProps> = ({ obj, children, setObj }) => {
 	}
 
 	return (
-		<div className="draggable" draggable onDragStart={(event) => handleDragStart(event)} onDrag={(event) => handleDrag(event)} onDragEnd={(event) => handleDragEnd(event)}>
+		<div className="draggable" draggable onDragStart={(event) => { handleDragStart(event);  }} onDrag={(event) => handleDrag(event)} onDragEnd={(event) => handleDragEnd(event)}>
 			{children}
 		</div>
 	);

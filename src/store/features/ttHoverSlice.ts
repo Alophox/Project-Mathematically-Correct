@@ -24,6 +24,7 @@ export enum ToolTipPosition {
  */
 export enum ToolTipType {
 	None = "None",
+	Normal = "Normal",
 	Item = "Item",
 	Champ = "Champ",
 	Stat = "Stat",
@@ -32,7 +33,7 @@ export enum ToolTipType {
 
 interface ttHoverState {
 	type: ToolTipType,
-	hovered: (Item | undefined) | Champion | Stat,
+	hovered: (Item | undefined) | Champion | Stat | (string | JSX.Element),
 	position: ToolTipPosition,
 	extra?: StatBuild,
 }
