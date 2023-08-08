@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/Project-Mathematically-Correct/static/css/main.ece5cf07.css",
-    "main.js": "/Project-Mathematically-Correct/static/js/main.bae73870.js",
+    "main.js": "/Project-Mathematically-Correct/static/js/main.a4594a75.js",
     "static/js/787.87e96488.chunk.js": "/Project-Mathematically-Correct/static/js/787.87e96488.chunk.js",
     "static/media/AsheSquare.webp": "/Project-Mathematically-Correct/static/media/AsheSquare.4cf2ac078e958d5244e3.webp",
     "static/media/AnnieSquare.webp": "/Project-Mathematically-Correct/static/media/AnnieSquare.7bd22c3eda88db6ac1a4.webp",
@@ -48,6 +48,7 @@
     "static/media/Null-Magic_Mantle_item.webp": "/Project-Mathematically-Correct/static/media/Null-Magic_Mantle_item.bf76fd406e13d07290f8.webp",
     "static/media/Rylai's_Crystal_Scepter_item_HD.webp": "/Project-Mathematically-Correct/static/media/Rylai's_Crystal_Scepter_item_HD.94604d56b87f8b955039.webp",
     "static/media/Morellonomicon_item_HD.webp": "/Project-Mathematically-Correct/static/media/Morellonomicon_item_HD.c4170c6d45d38e05dd29.webp",
+    "static/media/Abyssal_Mask_item_HD.webp": "/Project-Mathematically-Correct/static/media/Abyssal_Mask_item_HD.68af6f91ec1ea707eb80.webp",
     "static/media/Leeching_Leer_item.webp": "/Project-Mathematically-Correct/static/media/Leeching_Leer_item.e40fdd52759ff7c115fe.webp",
     "static/media/Rod_of_Ages_item_HD.webp": "/Project-Mathematically-Correct/static/media/Rod_of_Ages_item_HD.e86c307c8666e80486fb.webp",
     "static/media/Icon_Armor.svg": "/Project-Mathematically-Correct/static/media/Icon_Armor.0785608af060824a2a3c.svg",
@@ -62,6 +63,7 @@
     "static/media/Shard_of_True_Ice_item_HD.webp": "/Project-Mathematically-Correct/static/media/Shard_of_True_Ice_item_HD.a0e0cb1e179136893a4a.webp",
     "static/media/Icon_Vamp.svg": "/Project-Mathematically-Correct/static/media/Icon_Vamp.46d33d4aa03567e8cc07.svg",
     "static/media/Dark_Seal_item_HD.webp": "/Project-Mathematically-Correct/static/media/Dark_Seal_item_HD.d8bedfc1b2be6a628782.webp",
+    "static/media/Negatron_Cloak_item_HD.webp": "/Project-Mathematically-Correct/static/media/Negatron_Cloak_item_HD.0affa88541da25f8342b.webp",
     "static/media/Mobility_Boots_item_HD.webp": "/Project-Mathematically-Correct/static/media/Mobility_Boots_item_HD.38ef5b7bf25f23e93567.webp",
     "static/media/Icon_LifeSteal.svg": "/Project-Mathematically-Correct/static/media/Icon_LifeSteal.8ffaa371b75685b8b3df.svg",
     "static/media/Boots_of_Swiftness_item_HD.webp": "/Project-Mathematically-Correct/static/media/Boots_of_Swiftness_item_HD.72184cae6a01c9884fc0.webp",
@@ -120,11 +122,11 @@
     "static/media/Icon_CriticalStrikeChance.svg": "/Project-Mathematically-Correct/static/media/Icon_CriticalStrikeChance.ce7feca51c9fdf9411b0.svg",
     "static/media/Icon_Mana.svg": "/Project-Mathematically-Correct/static/media/Icon_Mana.b4229e663133e9c06403.svg",
     "main.ece5cf07.css.map": "/Project-Mathematically-Correct/static/css/main.ece5cf07.css.map",
-    "main.bae73870.js.map": "/Project-Mathematically-Correct/static/js/main.bae73870.js.map",
+    "main.a4594a75.js.map": "/Project-Mathematically-Correct/static/js/main.a4594a75.js.map",
     "787.87e96488.chunk.js.map": "/Project-Mathematically-Correct/static/js/787.87e96488.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.ece5cf07.css",
-    "static/js/main.bae73870.js"
+    "static/js/main.a4594a75.js"
   ]
 }

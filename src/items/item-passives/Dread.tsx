@@ -37,7 +37,14 @@ export class Dread extends Passive {
 				sourceChamp.statBuild!.addStatShare(Stat.AbilityPower, this.glory.currentStacks * this.prop.apPerStack, false, StatMathType.Flat, this.primarySource, this.passiveName);
 				break;
 		}
+	}
 
+	public reconcile(otherPassive: this): boolean {
+		if (otherPassive.primarySource === "Mejai's Soulstealer") {
+			return true;
+		} else {
+			return false;
+		}
 
 	}
 
