@@ -110,7 +110,7 @@ export class StatBuild {
 						this.itemPassives.set(value.passiveName, value);
 					}
 				} else {
-					console.log(value.passiveName);
+					//console.log(value.passiveName);
 					this.itemPassives.set(value.passiveName, value);
 				}
 					
@@ -417,7 +417,7 @@ export class StatBuild {
 
 			DI.modPostMitDamage(1 / duration);
 	//		if(DI.instName === "A")
-			console.log(DI.instName + ":");
+			//console.log(DI.instName + ":");
 			DI.damageShares.totalStatShares.forEach((share) => {
 				this.addStatShare(Stat.DamagePerSecond, share.amount, false, type, share.primarySource, share.secondarySource);
 				//console.log(share.primarySource + " " + share.secondarySource + " " + (share.amount));
