@@ -1,29 +1,29 @@
 import { Stat } from '../../Stat';
 import { Passive } from '../Passive';
-import { Annul } from '../item-passives/Annul';
-import { FiendishCodex } from './FiendishCodex';
-import { VerdantBarrier } from './VerdantBarrier';
+import { Unmake } from '../item-passives/Unmake';
+import { Kindlegem } from './Kindlegem';
+import { NegatronCloak } from './NegatronCloak';
 import { Item, ItemCategory, ItemType } from '../Item';
 
-export abstract class AbyssakMask extends Item {
+export abstract class AbyssalMask extends Item {
 	static itemName = "Abyssal Mask";
 	static searchNames = new Array<string>();
 	static image = "Abyssal_Mask_item_HD.webp"
 	static type = ItemType.Legendary;
 	static stats = new Map<Stat, number>([
-		[Stat.Cost, 2600],
-		[Stat.AbilityPower, 80],
-		[Stat.MagicResist, 45],
+		[Stat.Cost, 2400],
+		[Stat.Health, 300],
+		[Stat.MagicResist, 60],
 		[Stat.AbilityHaste, 10],
 	]);
 	static components = [
-		FiendishCodex,
-		VerdantBarrier,
+		Kindlegem,
+		NegatronCloak,
 	];
 	//static restrictions = ItemRestrictions.None;
-	static itemCategory = ItemCategory.Mage;
+	static itemCategory = ItemCategory.Tank;
 	static passives = new Array<Passive>(
-		new Annul(this.itemName),
+		new Unmake(this.itemName),
 	);
-	static additionalTip = "Annul currently has no impact on any calculations.";
+	static additionalTip = "";
 }
