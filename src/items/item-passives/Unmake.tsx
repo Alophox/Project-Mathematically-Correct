@@ -1,8 +1,7 @@
 import { CDRType, StatBuild } from "../../builds/StatBuild";
-import { StatIcon, TextIcon } from "../../icons/TextIcon";
 import { Passive, PassiveTrigger } from "../Passive";
-import { StatIcon } from "../../icons/TextIcon";
 import { Stat } from "../../Stat";
+import { StatIcon } from "../../icons/TextIcon";
 
 export class Unmake extends Passive {
 	passiveName = "Unmake";
@@ -13,15 +12,15 @@ export class Unmake extends Passive {
 	private BONUSMRPERCURSE = 9;
 	private RANGE = 550;
 	DescriptionElement = (statBuild?: StatBuild) => {
-		bonusShred = this.BASEREDUCTION + (statBuild.getBonusStat(Stat.Health) ?? 0) * this.BONUSHEALTHRATIO;
+		let bonusShred = this.BASEREDUCTION + (statBuild?.getBonusStat(Stat.Health) ?? 0) * this.BONUSHEALTHRATIO;
 		/**@todo:implement cap*/
 		return (
 			<span>
 				Enemy Champions within {this.RANGE} units are cursed, reducing their{" "}
 				<span className={Stat[Stat.MagicResist]}>
-      				<StatIcon stat={Stat.MagicResist}/> Magic Resist by {this.EnhancedText("" + (this.BASEREDUCRION + this.bonusShred) + " = ", statBuild)}({this.BASEREDUCTION} +{" "}
+      				<StatIcon stat={Stat.MagicResist}/> Magic Resist by {this.EnhancedText("" + (this.BASEREDUCTION + bonusShred) + " = ", statBuild)}({this.BASEREDUCTION} +{" "}
 					<span className={Stat[Stat.Health]}>
-						({this.BONUSHEALTHRATIO * 100}% <StatIcon stat={Stat[Stat.Health]}/> Bonus Health{this.EnhancedText("(" + this.bonusShred + ")", statBuild)})
+						({this.BONUSHEALTHRATIO * 100}% <StatIcon stat={Stat.Health}/> Bonus Health{this.EnhancedText("(" + bonusShred + ")", statBuild)})
 					</span>
 					)
 				</span>
