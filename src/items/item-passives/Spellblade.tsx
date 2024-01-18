@@ -42,6 +42,7 @@ export class Spellblade extends Passive {
 		lichBane: {
 			BASEADRATIO: 1,
 			APRATIO: .5,
+			ASBUFF: .5,
 		}
 
 	}
@@ -57,13 +58,19 @@ export class Spellblade extends Passive {
 		}
 	}
 
-	public trigger(trigger: PassiveTrigger, sourceChamp: Champion, time?: number, damageInst?: DamageInstance): void {
+	public trigger(trigger: PassiveTrigger, sourceChampion: Champion, time?: number, damageInst?: DamageInstance): void {
 		switch (trigger) {
+			case PassiveTrigger.IndependentStat:
+				if (this.buffEndTime >= time!) {
+					if(this.sources & SpellbladeSource.LichBane)
+						sourceChampion.statBuild?.addStatShare(Stat.AttackSpeed, this.props.lichBane.ASBUFF, false, StatMathType.Flat, this.primarySource, this.passiveName);
+				}
+				break;
 			case PassiveTrigger.OnAttackHit:
 				if (this.buffEndTime > time!) {
 					let damage: number;
 					let damageInst1: DamageInstance;
-					let statBuild: StatBuild = sourceChamp.statBuild!;
+					let statBuild: StatBuild = sourceChampion.statBuild!;
 					switch (this.primarySource) {
 					//	case DivineSunderer.itemName:
 					//		//todo
@@ -86,7 +93,7 @@ export class Spellblade extends Passive {
 						case "Lich Bane":
 							damage = this.props.lichBane.BASEADRATIO * statBuild.getBaseStat(Stat.AttackDamage) + this.props.lichBane.APRATIO * statBuild.getTotalStat(Stat.AbilityPower);
 							damageInst1 = new DamageInstance(damageInst!.sourceChamp, damageInst!.targetChamp, this.passiveName, DamageType.Magic, damage, time!, damageInst!.castInstance, DamageTag.Item | DamageTag.Proc);
-
+							//console.log("eh???");
 							break;
 					//	case EssenceReaver.itemName:
 					//		//todo
@@ -114,12 +121,18 @@ export class Spellblade extends Passive {
 				break;
 			case PassiveTrigger.OnAbilityCast:
 				if (this.cooldownTime <= time!) {
-					this.buffEndTime = time! + this.props.BUFFDURATION;
+					if (this.buffEndTime < time!) {
+						this.buffEndTime = time! + this.props.BUFFDURATION;
+						sourceChampion.statBuild!.updateStats(sourceChampion);
+					} else {
+						this.buffEndTime = time! + this.props.BUFFDURATION;
+					}
+					
 				}
-				
 				break;
 			case PassiveTrigger.Reset:
 				this.buffEndTime = 0;
+				this.cooldownTime = 0;
 				break;
 		}
 	}

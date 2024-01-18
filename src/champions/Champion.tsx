@@ -484,7 +484,7 @@ export abstract class Champion {
 	}
 
 	public handleDamageInst(damageInst: DamageInstance, time: number, canReduce:boolean = true) {
-		//console.log("ability hit: " + damageInst.instName + " for " + damageInst.preMitigation);
+		//console.log("ability hit: " + damageInst.instName + " for " + damageInst.preMitigation + " from " + damageInst.sourceChamp.championName);
 
 		//on hit and damaging
 		if (!(damageInst.damageTags === DamageTag.None)) {

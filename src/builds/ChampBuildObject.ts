@@ -92,7 +92,7 @@ export class ChampBuildObject {
 			ability = allyBurstSequence.charAt(allyIndex);
 			//console.log(ability + " -> " + Ability[ability as keyof typeof Ability]);
 
-			console.log("Tick: " + (time / TICKTIME).toFixed(0));
+			//console.log("Tick: " + (time / TICKTIME).toFixed(0));
 
 			//if ability casts or is not an ability, returns true.
 			//non ability inputs consume a tick of time, however

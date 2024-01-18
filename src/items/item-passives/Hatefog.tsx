@@ -58,7 +58,7 @@ export class Hatefog extends Passive {
 						{this.FLATDAMAGE}{" "}
 					</span>
 					<span className={Stat[Stat.AbilityPower]}>
-						+ {this.APRATIO * 100}% <StatIcon stat={Stat.AbilityPower} />{this.EnhancedText(" (" + apDamage + ")", statBuild)}
+						+ {this.APRATIO * 100}% <StatIcon stat={Stat.AbilityPower} />{this.EnhancedText(" (" + this.FloatPrecision(apDamage,2) + ")", statBuild)}
 					</span>
 					) magic damage{" "}
 				</span>
