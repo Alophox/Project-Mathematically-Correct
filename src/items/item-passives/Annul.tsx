@@ -4,7 +4,7 @@ import { Passive, PassiveTrigger } from "../Passive";
 
 export class Annul extends Passive {
 	passiveName = "Annul";
-	additionalTip = "Cooldown is restarted when damage is taken from Champions.";
+	additionalTip = "Cooldown is restarted when damage is taken from Champions. Currently not used in this calculator.";
 	DescriptionElement = (statBuild?: StatBuild) => {
 		return (
 			<span>

@@ -168,21 +168,21 @@ export class StatBuild {
 		});
 
 		//mythic passives
-		this.items.forEach((item) => {
-			if ((item.item as typeof Item)?.type === ItemType.Mythic) {
-				(item.item as typeof Item).getMythicStats(this.legendaries).forEach((amount, stat) => {
-					//console.log(Stat[stat] + " " + amount);
-					switch (stat) {
-						case Stat.AttackSpeed:
-							this.addStatShare(stat, this.convertBonusAS(amount), false, StatMathType.PercAdditive, (item.item as typeof Item).itemName, "Mythic " + Stat[stat]);
-							break;
-						default:
-							this.addStatShare(stat, amount, false, StatMathType.Flat, (item.item as typeof Item).itemName, "Mythic " + Stat[stat]);
-							break;
-					}
-				});
-			}
-		});
+		//this.items.forEach((item) => {
+		//	if ((item.item as typeof Item)?.type === ItemType.Mythic) {
+		//		(item.item as typeof Item).getMythicStats(this.legendaries).forEach((amount, stat) => {
+		//			//console.log(Stat[stat] + " " + amount);
+		//			switch (stat) {
+		//				case Stat.AttackSpeed:
+		//					this.addStatShare(stat, this.convertBonusAS(amount), false, StatMathType.PercAdditive, (item.item as typeof Item).itemName, "Mythic " + Stat[stat]);
+		//					break;
+		//				default:
+		//					this.addStatShare(stat, amount, false, StatMathType.Flat, (item.item as typeof Item).itemName, "Mythic " + Stat[stat]);
+		//					break;
+		//			}
+		//		});
+		//	}
+		//});
 
 		this.itemPassives.forEach((value: Passive) => {
 			value.trigger(PassiveTrigger.IndependentStat, champ);
@@ -240,6 +240,14 @@ export class StatBuild {
 		});
 		this.itemPassives.forEach((value: Passive) => {
 			value.trigger(PassiveTrigger.CapstoneStat, champ);
+		});
+
+		//and... shred
+		this.itemPassives.forEach((value: Passive) => {
+			value.trigger(PassiveTrigger.ShredStatFlat, champ);
+		});
+		this.itemPassives.forEach((value: Passive) => {
+			value.trigger(PassiveTrigger.ShredStatPerc, champ);
 		});
 		//console.log("ability power: " + this.statNetMap.get(Stat.AbilityPower)?.totalStat);
 	}
@@ -310,7 +318,7 @@ export class StatBuild {
 	}
 
 	/**
-	 * returns cdr- multiply a CD by 1- cdr to get new cd
+	 * returns entire cdr for given type(ie ultAbility gives ability + ult haste)- multiply a CD by (1- cdr) to get new cd
 	 * @param type
 	 * @returns
 	 */
@@ -321,6 +329,9 @@ export class StatBuild {
 			/**@todo: other haste types*/
 			case CDRType.BasicAbility:
 				statVal = this.getTotalStat(Stat.AbilityHaste);
+				break;
+			case CDRType.UltimateAbility:
+				statVal = this.getTotalStat(Stat.AbilityHaste) + this.getTotalStat(Stat.UltimateAbilityHaste);
 				break;
 			case CDRType.Item:
 				statVal = this.getTotalStat(Stat.ItemHaste);

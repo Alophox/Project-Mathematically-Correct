@@ -72,7 +72,7 @@ export abstract class ItemList {
 			if ((item as typeof Item).itemCategory & defaultCategories) {
 				//if item is completed item
 				//currently have to make an exception for boots... figure out something better later, cause slightly magical footwear exists(tho that might just end up being slapped on as a passive? idk)
-				if ((item as typeof Item).type === ItemType.Legendary || (item as typeof Item).type === ItemType.Mythic || ((item as typeof Item).type === ItemType.Boots && (item as typeof Item).itemName !== "Boots")) {
+				if ((item as typeof Item).type === ItemType.Legendary /*|| (item as typeof Item).type === ItemType.Mythic*/ || ((item as typeof Item).type === ItemType.Boots && (item as typeof Item).itemName !== "Boots")) {
 					defaultItems.push(item);
 				}
 			}

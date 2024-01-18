@@ -36,15 +36,14 @@ export class Ahri extends Champion{
 		[Stat.Armor, 4.7],
 		[Stat.MagicResist, 1.3],
 		[Stat.AttackDamage, 3],
-		[Stat.AttackSpeed, .02],
+		[Stat.AttackSpeed, .022],
 	]);
 	public readonly resourceType = ResourceType.Mana;
 
 	//some stats are utilized only within the champion
 
-
-	public readonly baseAttackSpeed = .668;
-	protected readonly baseAttackWindup		= .20054;
+	public readonly baseAttackSpeed = .625;
+	protected readonly baseAttackWindup		= .20;
 	protected readonly baseAttackSpeedRatio	= undefined; //ASRatio is undefined when not explicitly stated, meaning it'd be the same as base attack speed
 
 
@@ -112,7 +111,7 @@ export class Ahri extends Champion{
 			CASTTIME: .25,
 			PROJSPEED: 1550,
 			PROJRANGE: 900, 
-
+			PROJRADIUS: 100,
 			RANK1MANA: 55,
 			RANKUPMANA: 10,
 
@@ -333,7 +332,7 @@ export class Ahri extends Champion{
 			//console.log("check: " + (startPos + PROJRANGE) + " " + (position(time)!));
 			return (position1(time)!) * dir >= startPos + abilityProps.PROJRANGE;
 		};
-		damageInst1.setBehaviour(abilityProps.CASTTIME, position1, startPos, expiration1);
+		damageInst1.setBehaviour(abilityProps.CASTTIME, position1, startPos, abilityProps.PROJRANGE + abilityProps.PROJRADIUS, expiration1);
 		/**@todo: edit this if we care about outgoing getting eaten by windwall or something else*/
 		//missile start speed 60, accel 1900, max 2600
 		let position2: (time: number) => number | undefined = function (time: number): number | undefined {
@@ -346,7 +345,7 @@ export class Ahri extends Champion{
 			//console.log((position2(time)!));
 			return (position2(time)!) * dir <= startPos;
 		};
-		damageInst2.setBehaviour(abilityProps.CASTTIME + abilityProps.PROJRANGE / abilityProps.PROJSPEED, position2, startPos, expiration2);
+		damageInst2.setBehaviour(abilityProps.CASTTIME + abilityProps.PROJRANGE / abilityProps.PROJSPEED, position2, startPos, abilityProps.PROJRANGE + abilityProps.PROJRADIUS, expiration2);
 		
 		this.castBuffer.push(damageInst1, damageInst2);
 		this.castingTime = time + abilityProps.CASTTIME;
@@ -389,9 +388,9 @@ export class Ahri extends Champion{
 		let position3: (time: number) => number | undefined = function (time: number): number | undefined {
 			return time * abilityProps.PROJSPEED * dir + startPos;
 		};
-		damageInst1.setBehaviour(abilityProps.CASTTIME + abilityProps.DELAY, position1, startPos);
-		damageInst2.setBehaviour(abilityProps.CASTTIME + abilityProps.DELAY, position2, startPos);
-		damageInst3.setBehaviour(abilityProps.CASTTIME + abilityProps.DELAY, position3, startPos);
+		damageInst1.setBehaviour(abilityProps.CASTTIME + abilityProps.DELAY, position1, abilityProps.PROJRANGE, startPos);
+		damageInst2.setBehaviour(abilityProps.CASTTIME + abilityProps.DELAY, position2, abilityProps.PROJRANGE, startPos);
+		damageInst3.setBehaviour(abilityProps.CASTTIME + abilityProps.DELAY, position3, abilityProps.PROJRANGE, startPos);
 
 		this.castBuffer.push(damageInst1, damageInst2, damageInst3);
 		this.castingTime = time + abilityProps.CASTTIME;
@@ -424,7 +423,7 @@ export class Ahri extends Champion{
 			//console.log("check: " + (startPos + abilityProps.PROJRANGE) + " " + (position1(time)!));
 			return (position1(time)!) * dir >= startPos + abilityProps.PROJRANGE;
 		};
-		damageInst1.setBehaviour(abilityProps.CASTTIME, position1, startPos, expiration1);
+		damageInst1.setBehaviour(abilityProps.CASTTIME, position1, startPos, abilityProps.PROJRANGE, expiration1);
 
 		damageInst1.netCC = abilityProps.NETCC;
 
@@ -447,7 +446,7 @@ export class Ahri extends Champion{
 		if (abilityProps.timeWindow <= time) {
 			abilityProps.charges = 3;
 			abilityProps.timeWindow = time + 15;
-			this.cooldowns[Ability.R] = time + abilityProps.CASTTIME + CD * (1 - this.statBuild!.getCDR(CDRType.UltimateAbility));
+			this.cooldowns[Ability.R] = time + CD * (1 - this.statBuild!.getCDR(CDRType.UltimateAbility));
 		}
 
 		this.dashSpeed = abilityProps.DASHBASESPEED + this.statBuild!.getTotalStat(Stat.MoveSpeed);
@@ -468,7 +467,7 @@ export class Ahri extends Champion{
 		let expiration1: (time: number) => boolean = function (time: number): boolean {
 			return (position1(time)!)*dir >= startPos + abilityProps.PROJRANGE;
 		};
-		damageInst1.setBehaviour(abilityProps.CASTTIME + (abilityProps.DASHRANGE / this.dashSpeed), position1, startPos, expiration1);
+		damageInst1.setBehaviour(abilityProps.CASTTIME + (abilityProps.DASHRANGE / this.dashSpeed), position1, startPos, abilityProps.PROJRANGE, expiration1);
 
 		
 

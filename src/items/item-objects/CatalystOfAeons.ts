@@ -19,7 +19,7 @@ export abstract class CatalystOfAeons extends Item {
 		RubyCrystal,
 		SapphireCrystal
 	);
-	static restrictions = ItemRestrictions.MythicComponent;
+	static restrictions = ItemRestrictions.None;
 	static itemCategory = ItemCategory.Mage;
 	static passives = new Array<Passive>(
 		new Eternity(this.itemName),

@@ -15,7 +15,7 @@ export enum ItemType {
 	/** completed items*/
 	Legendary = 1 << 4, 
 	/**more restricted completed items */
-	Mythic = 1 << 5,
+	//Mythic = 1 << 5,
 
 	
 
@@ -31,6 +31,9 @@ export enum ItemRestrictions {
 	Mythic = 1 << 3,
 	Boots = 1 << 4,
 	Glory = 1 << 5,
+	VoidPen = 1 << 6,
+	Spellblade = 1 << 7,
+	Annul = 1 << 8,
 	/**
 	 * mythic components cannot be with other mythic components or mythics
 	 * equal to mythic cause we don't care about completing items after components have been bought

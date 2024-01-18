@@ -1,6 +1,4 @@
-import { CC } from "../../builds/CrowdControl";
-import { DamageInstance, DamageTag, DamageType, Targeting } from "../../builds/DamageInstance";
-import { TICKTIME } from "../../builds/ServerConstants";
+import { DamageInstance} from "../../builds/DamageInstance";
 import { StatBuild, StatMathType } from "../../builds/StatBuild";
 import { Champion, ResourceType } from "../../champions/Champion";
 import { Stat } from "../../Stat";
@@ -35,14 +33,14 @@ export class Glory extends Passive {
 	private prop;
 	constructor(primarySource: string) {
 		super(primarySource);
-		this.prop = this.primarySource === DarkSeal.itemName ? this.props.darkSeal : this.props.mejais;
+		this.prop = this.primarySource === "Dark Seal" ? this.props.darkSeal : this.props.mejais;
 	}
 	
-	public trigger(trigger: PassiveTrigger, sourceChamp: Champion, time?: number, damageInst?: DamageInstance): void {
+	public trigger(trigger: PassiveTrigger, sourceChampion: Champion, time?: number, damageInst?: DamageInstance): void {
 		switch (trigger) {
 			case PassiveTrigger.IndependentStat:
 				if (this.primarySource === "Mejai's Soulstealer" && this.currentStacks >= this.props.mejais.bonusMSReq) {
-					sourceChamp.statBuild!.addStatShare(Stat.MoveSpeedPercent, this.props.mejais.bonusMS, false, StatMathType.Flat, this.primarySource, this.passiveName);
+					sourceChampion.statBuild!.addStatShare(Stat.MoveSpeedPercent, this.props.mejais.bonusMS, false, StatMathType.Flat, this.primarySource, this.passiveName);
 				}
 				break;
 			case PassiveTrigger.Reset:

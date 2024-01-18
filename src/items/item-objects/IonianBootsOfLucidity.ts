@@ -8,8 +8,8 @@ export abstract class IonianBootsOfLucidity extends Item {
 	static image = "Ionian_Boots_of_Lucidity_item_HD.webp"
 	static type = ItemType.Boots;
 	static stats = new Map<Stat, number>([
-		[Stat.Cost, 950],
-		[Stat.AbilityHaste, 20],
+		[Stat.Cost, 900],
+		[Stat.AbilityHaste, 15],
 		[Stat.MoveSpeedFlat, 45],
 		[Stat.SummonerSpellHaste, 12],
 	]);

@@ -6,8 +6,8 @@ import { StatIcon } from "../../icons/TextIcon";
 import { Stat } from "../../Stat";
 import { Passive, PassiveTrigger } from "../Passive";
 
-export class RodOfAgesPassive extends Passive {
-	passiveName = "";
+export class Timeless extends Passive {
+	passiveName = "Timeless";
 	static image = "Rod_of_Ages_item_HD.webp";
 	additionalTip = "Eternity tooltip reflects this increase when it is applied.";
 	public static INITIALSTACKS = 10;
@@ -22,10 +22,10 @@ export class RodOfAgesPassive extends Passive {
 	private MANAPERSTACK = 20;
 	private APPERSTACK = 4;
 
-	private startTime = 0 - this.STACKDURATION * RodOfAgesPassive.INITIALSTACKS;
+	private startTime = 0 - this.STACKDURATION * Timeless.INITIALSTACKS;
 
 
-	public eternityMultiplier:number = 1;
+	public eternityMultiplier:number = .5;
 
 	public trigger(trigger: PassiveTrigger, sourceChamp: Champion, time?: number, damageInst?: DamageInstance): void {
 		switch (trigger) {
@@ -37,15 +37,15 @@ export class RodOfAgesPassive extends Passive {
 				statBuild.addStatShare(Stat.AbilityPower, this.APPERSTACK * this.currentStacks, false, StatMathType.Flat, this.primarySource, this.secondarySourceName + Stat[Stat.AbilityPower]);
 				break;
 			case PassiveTrigger.OnTick:
-				if ((this.currentStacks < RodOfAgesPassive.MAXSTACKS) && (((time! - this.startTime) % this.STACKDURATION) < TICKTIME)) {
+				if ((this.currentStacks < Timeless.MAXSTACKS) && (((time! - this.startTime) % this.STACKDURATION) < TICKTIME)) {
 					this.currentStacks = Math.floor((time! - this.startTime) / this.STACKDURATION);
 					sourceChamp.statBuild!.updateStats(sourceChamp);
 				}
 				break;
 			case PassiveTrigger.Reset:
-				this.startTime = 0 - this.STACKDURATION * RodOfAgesPassive.INITIALSTACKS;
-				this.currentStacks = RodOfAgesPassive.INITIALSTACKS;
-				this.eternityMultiplier = (this.currentStacks === RodOfAgesPassive.MAXSTACKS) ? this.STACKEDINCREASE : 1
+				this.startTime = 0 - this.STACKDURATION * Timeless.INITIALSTACKS;
+				this.currentStacks = Timeless.INITIALSTACKS;
+				this.eternityMultiplier = (this.currentStacks === Timeless.MAXSTACKS) ? this.STACKEDINCREASE : 1
 			//console.log(this.currentStacks);
 				break;
 		}
@@ -68,7 +68,7 @@ export class RodOfAgesPassive extends Passive {
 				<span className={Stat[Stat.AbilityPower]}>
 					{this.APPERSTACK} <StatIcon stat={Stat.AbilityPower} /> Ability Power{this.EnhancedText(" (" + (this.APPERSTACK * this.currentStacks) + ")", statBuild)}{" "}
 				</span>
-				every {this.STACKDURATION} seconds, up to {RodOfAgesPassive.MAXSTACKS} times. Upon reaching max stacks, gain a level and increase the effects of Eternity by {(this.STACKEDINCREASE - 1) * 100}%.
+				every {this.STACKDURATION} seconds, up to {Timeless.MAXSTACKS} times. Upon reaching max stacks, gain a level and increase the effects of Eternity by {(this.STACKEDINCREASE - 1) * 100}%.
 			</span>
 		);
 	}

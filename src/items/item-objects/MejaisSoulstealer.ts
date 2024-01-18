@@ -3,6 +3,7 @@ import { Passive } from '../Passive';
 import { Item, ItemCategory, ItemRestrictions, ItemType } from '../Item';
 import { Glory } from '../item-passives/Glory';
 import { Dread } from '../item-passives/Dread';
+import { DarkSeal } from './DarkSeal';
 
 export abstract class MejaisSoulstealer extends Item {
 	static itemName = "Mejai's Soulstealer";
@@ -12,12 +13,12 @@ export abstract class MejaisSoulstealer extends Item {
 	static image = "Mejai's_Soulstealer_item_HD.webp"
 	static type = ItemType.Legendary;
 	static stats = new Map<Stat, number>([
-		[Stat.Cost, 1600],
+		[Stat.Cost, 1500],
 		[Stat.AbilityPower, 20],
 		[Stat.Health, 100],
 	]);
 	static components = [
-		//DarkSeal,
+		DarkSeal,
 	];
 	static restrictions = ItemRestrictions.Glory;
 	static itemCategory = ItemCategory.Mage;

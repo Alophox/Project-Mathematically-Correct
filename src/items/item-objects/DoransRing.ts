@@ -1,8 +1,8 @@
 import { Stat } from '../../Stat';
 import { Passive } from '../Passive';
-import { Focus } from '../item-passives/Focus';
+import { MinionDamageBuff } from '../item-passives/MinionDamageBuff';
 import { Item, ItemCategory, ItemType } from '../Item';
-import { Drain } from '../item-passives/Drain';
+import { Restoration } from '../item-passives/Restoration';
 
 
 export abstract class DoransRing extends Item {
@@ -12,15 +12,15 @@ export abstract class DoransRing extends Item {
 	static type = ItemType.Starter;
 	static stats = new Map<Stat, number>([
 		[Stat.Cost, 400],
-		[Stat.AbilityPower, 15],
-		[Stat.Health, 70],
+		[Stat.AbilityPower, 18],
+		[Stat.Health, 90],
 	]);
 	//static components = [];
 	//static restrictions = Item.ItemRestrictions.None;
 	static itemCategory = ItemCategory.Marksman | ItemCategory.Assassin | ItemCategory.Mage | ItemCategory.Tank;
 	static passives = new Array<Passive>(
-		new Focus(this.itemName),
-		new Drain(this.itemName),
+		new MinionDamageBuff(this.itemName),
+		new Restoration(this.itemName),
 	);
 	//static additionalTip = "";
 }

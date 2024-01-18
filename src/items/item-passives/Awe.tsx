@@ -11,7 +11,7 @@ export class Awe extends Passive {
 	additionalTip = ""
 	private get bonusManaRatio():number {
 		if (this.primarySource === ArchangelsStaff.upgradeName) {
-			return .025;
+			return .02;
 		} else {
 			return .01;
 		}

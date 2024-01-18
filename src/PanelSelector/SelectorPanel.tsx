@@ -17,6 +17,7 @@ import { setCalcAttr } from '../store/features/calculatorAttributes';
 import { Stat, StatNameReplace } from '../Stat';
 import { StatIcon } from '../icons/TextIcon';
 import { Passive } from '../items/Passive';
+import { ConditionalWrapper } from '../ConditionalWrapper';
 /**
  * @todo: implement champion stacks selector and editor
  * @todo: implement runes selector and editor
@@ -450,6 +451,7 @@ const ChampAttributes: React.FC<ChampAttributesProps> = ({setDefaultChamp }) => 
 			/>
 			<AttributeInput<string>
 				label="Burst Sequence:"
+				tooltip={<>The Sequence of Attacks(a) and Abilties(qwer) to use for <StatIcon stat={Stat.Burst} /> Burst calculations.</>}
 				placeholder="q, w, e, r, a"
 				maxWidth="6em"
 				valueRef={allyBurstSequence}
@@ -458,6 +460,7 @@ const ChampAttributes: React.FC<ChampAttributesProps> = ({setDefaultChamp }) => 
 			/>
 			<AttributeInput<string>
 				label="DPS Priority:"
+				tooltip={<>The Priority of Attacks(a) and Abilties(qwer) to use for <StatIcon stat={Stat.DamagePerSecond} /> Damage per Second calculations.</>}
 				placeholder="q, w, e, r, a"
 				maxWidth="6em"
 				valueRef={allyDPSPriority}
@@ -539,6 +542,7 @@ const ItemAttributes: React.FC<ItemAttributesProps> = ({setDefaultChamp  }) => {
 
 interface AttributeInputProps<T> {
 	label: string | JSX.Element,
+	tooltip?: string | JSX.Element,
 	placeholder: string,
 	/**for style, max width of input box- suggest use em*/
 	maxWidth: string | number,
@@ -547,64 +551,74 @@ interface AttributeInputProps<T> {
 	handleAttributeSet?: Function,
 	blankValue?: T;
 	maxLength?: number;
+
 }
 
 export const AttributeInput = <T extends string | number,>(props: AttributeInputProps<T>) => {
+
 	return (
-		<div className="AttributeContainer">
-			<label>
-				{props.label}
-			</label>
-			<span className="FlexGrow" />
+		
+			<div>
+			<ConditionalWrapper
+				condition={props.tooltip !== undefined}
+				wrapper={children => <NormalToolTipTrigger description={props.tooltip!} toSetTTPosition={ToolTipPosition.Bot}> {children}</NormalToolTipTrigger> }
+			>
+				<div className="AttributeContainer">
+					<label>
+						{props.label}
+					</label>
+					<span className="FlexGrow" />
 
-			<input
-				//name={"allyLevelSet"}
-				type="text"
-				//pattern="[0-9]{2}"
-				placeholder={props.placeholder}
-				autoComplete="off"
-				className="UITextInput"
-				style={{
-					maxWidth: props.maxWidth,
-					height: "100%",
-					padding: "3px",
-				}}
-				defaultValue={props.valueRef.current}
-				onChange={event => {
-					if (event.target.value === '' || props.regex.test(event.target.value)) {
-						//if number
-						if ((typeof props.valueRef.current === 'number')) {
-							if (event.target.value !== '')
-								(props.valueRef as MutableRefObject<number>).current = parseInt(event.target.value);
-						} else { //is string
-							(props.valueRef as MutableRefObject<string>).current = event.target.value;
-						}
+					<input
+						//name={"allyLevelSet"}
+						type="text"
+						//pattern="[0-9]{2}"
+						placeholder={props.placeholder}
+						autoComplete="off"
+						className="UITextInput"
+						style={{
+							maxWidth: props.maxWidth,
+							height: "100%",
+							padding: "3px",
+						}}
+						defaultValue={props.valueRef.current}
+						onChange={event => {
+							if (event.target.value === '' || props.regex.test(event.target.value)) {
+								//if number
+								if ((typeof props.valueRef.current === 'number')) {
+									if (event.target.value !== '')
+										(props.valueRef as MutableRefObject<number>).current = parseInt(event.target.value);
+								} else { //is string
+									(props.valueRef as MutableRefObject<string>).current = event.target.value;
+								}
 						
-					} else {
-						event.target.value = props.valueRef.current + "";
-					}
-				}}
-				onBlur={event => {
-					if (event.currentTarget.value === '' && props.blankValue !== undefined) {
-						event.currentTarget.value = props.blankValue + '';
-						props.valueRef.current = props.blankValue;
-					}
-					if(props.handleAttributeSet !== undefined)
-						props.handleAttributeSet();
-				}}
-				onKeyUp={
-					event => {
-						if (event.key === "Enter") {
-							event.preventDefault();
-							event.currentTarget.blur();
+							} else {
+								event.target.value = props.valueRef.current + "";
+							}
+						}}
+						onBlur={event => {
+							if (event.currentTarget.value === '' && props.blankValue !== undefined) {
+								event.currentTarget.value = props.blankValue + '';
+								props.valueRef.current = props.blankValue;
+							}
+							if(props.handleAttributeSet !== undefined)
+								props.handleAttributeSet();
+						}}
+						onKeyUp={
+							event => {
+								if (event.key === "Enter") {
+									event.preventDefault();
+									event.currentTarget.blur();
+								}
+							}
 						}
-					}
-				}
-				//minLength={1}
-				maxLength={props.maxLength}
-				//size={1}
+						//minLength={1}
+						maxLength={props.maxLength}
+						//size={1}
 
-			/>
+					/>
+				</div>
+			</ConditionalWrapper>
 		</div>
 	);
 }

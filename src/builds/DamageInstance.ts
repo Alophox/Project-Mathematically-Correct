@@ -47,6 +47,9 @@ export class DamageInstance {
 	public damageType: DamageType;
 	public damageTags: DamageTag;
 
+	/**The crit chance for this instance*/
+	public critChanceRatio: number = 0;
+
 	public castInstance: number;
 
 	/**
@@ -116,6 +119,11 @@ export class DamageInstance {
 	 */
 	private startPos: number = 0;
 	/**
+	 * set in setBehaviour
+	 * max possible range to be hit by this instance
+	 */
+	public maxRange: number = 0;
+	/**
 	 * function that returns true if the DI expired
 	 * set in setBehaviour
 	 * @param time
@@ -157,10 +165,11 @@ export class DamageInstance {
 	 * @param expiration: function that returns if damageInst has gone beyond range or some other condition such that it no longer exists
 	 * @param hitDelay: delay of damage, such as periodic damage after the first tick, ie morgana w or rumble r
 	 */
-	public setBehaviour(castDelay: number, position: (time: number) => number|undefined, startPos:number, expiration?: (time: number) => boolean, hitDelay?: number) {
+	public setBehaviour(castDelay: number, position: (time: number) => number|undefined, startPos:number, maxRange:number, expiration?: (time: number) => boolean, hitDelay?: number) {
 		this.castDelay = castDelay;
 		this.position = position;
 		this.startPos = startPos;
+		this.maxRange = maxRange;
 		if(expiration !== undefined)
 			this.expiration = expiration;
 		this.hitDelay = hitDelay ?? 0;

@@ -13,7 +13,7 @@ export abstract class AetherWisp extends Item {
 	static type = ItemType.Epic;
 	static stats = new Map<Stat, number>([
 		[Stat.Cost, 850],
-		[Stat.AbilityPower, 35]
+		[Stat.AbilityPower, 30]
 	]);
 	static components = new Array<Item>([
 		AmplifyingTome,

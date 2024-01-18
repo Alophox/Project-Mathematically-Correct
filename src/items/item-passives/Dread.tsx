@@ -1,6 +1,4 @@
-import { CC } from "../../builds/CrowdControl";
 import { DamageInstance, DamageTag, DamageType, Targeting } from "../../builds/DamageInstance";
-import { TICKTIME } from "../../builds/ServerConstants";
 import { StatBuild, StatMathType } from "../../builds/StatBuild";
 import { Champion, ResourceType } from "../../champions/Champion";
 import { StatIcon } from "../../icons/TextIcon";
@@ -27,7 +25,7 @@ export class Dread extends Passive {
 	constructor(primarySource: string, glory: Glory) {
 		super(primarySource);
 		this.glory = glory;
-		this.prop = this.primarySource === DarkSeal.itemName ? this.props.darkSeal : this.props.mejais;
+		this.prop = this.primarySource === "Dark Seal" ? this.props.darkSeal : this.props.mejais;
 	}
 
 	public trigger(trigger: PassiveTrigger, sourceChamp: Champion, time?: number, damageInst?: DamageInstance): void {

@@ -10,9 +10,9 @@ export abstract class Shadowflame extends Item {
 	static image = "Shadowflame_item_HD.webp"
 	static type = ItemType.Legendary;
 	static stats = new Map<Stat, number>([
-		[Stat.Cost, 3000],
-		[Stat.AbilityPower, 100],
-		[Stat.Health, 200],
+		[Stat.Cost, 3200],
+		[Stat.AbilityPower, 120],
+		[Stat.MagicPenetrationFlat, 12],
 
 	]);
 	static components = new Array<Item>(

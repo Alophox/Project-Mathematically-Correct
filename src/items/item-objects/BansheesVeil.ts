@@ -1,9 +1,9 @@
 import { Stat } from '../../Stat';
 import { Passive } from '../Passive';
 import { Annul } from '../item-passives/Annul';
-import { FiendishCodex } from './FiendishCodex';
 import { VerdantBarrier } from './VerdantBarrier';
-import { Item, ItemCategory, ItemType } from '../Item';
+import { Item, ItemCategory, ItemRestrictions, ItemType } from '../Item';
+import { NeedlesslyLargeRod } from './NeedlesslyLargeRod';
 
 export abstract class BansheesVeil extends Item {
 	static itemName = "Banshee's Veil";
@@ -14,16 +14,15 @@ export abstract class BansheesVeil extends Item {
 	static image = "Banshee's_Veil_item_HD.webp"
 	static type = ItemType.Legendary;
 	static stats = new Map<Stat, number>([
-		[Stat.Cost, 2600],
-		[Stat.AbilityPower, 80],
-		[Stat.MagicResist, 45],
-		[Stat.AbilityHaste, 10],
+		[Stat.Cost, 3100],
+		[Stat.AbilityPower, 120],
+		[Stat.MagicResist, 50],
 	]);
 	static components = [
-		FiendishCodex,
+		NeedlesslyLargeRod,
 		VerdantBarrier,
 	];
-	//static restrictions = ItemRestrictions.None;
+	static restrictions = ItemRestrictions.Annul;
 	static itemCategory = ItemCategory.Mage;
 	static passives = new Array<Passive>(
 		new Annul(this.itemName),

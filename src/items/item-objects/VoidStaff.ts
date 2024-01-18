@@ -8,15 +8,15 @@ export abstract class VoidStaff extends Item {
 	static image = "Void_Staff_item.webp"
 	static type = ItemType.Legendary;
 	static stats = new Map<Stat, number>([
-		[Stat.Cost, 2800],
-		[Stat.AbilityPower, 65],
+		[Stat.Cost, 3000],
+		[Stat.AbilityPower, 80],
 		[Stat.MagicPenetrationPercent, .4]
 	]);
 	static components = new Array<Item>(
 		BlightingJewel,
 		BlastingWand
 	);
-	//static restrictions = ;
+	static restrictions = ItemRestrictions.VoidPen;
 	static itemCategory = ItemCategory.Mage;
 	//static passives = new Array<ItemPassive>();
 }

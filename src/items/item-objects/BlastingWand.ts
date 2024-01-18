@@ -8,11 +8,11 @@ export abstract class BlastingWand extends Item {
 	static type = ItemType.Basic;
 	static stats = new Map<Stat, number>([
 		[Stat.Cost, 850],
-		[Stat.AbilityPower, 40]
+		[Stat.AbilityPower, 45]
 	]);
 	//static components = [];
 	//static restrictions = ItemRestrictions.None;
-	static itemCategory = ItemCategory.Mage | ItemCategory.Tank;
+	static itemCategory = ItemCategory.Mage | ItemCategory.Support;
 
 
 }

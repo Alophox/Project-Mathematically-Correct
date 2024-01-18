@@ -6,7 +6,7 @@ import { StatIcon } from "../../icons/TextIcon";
 import { Stat } from "../../Stat";
 import { RodOfAges } from "../item-objects";
 import { Passive, PassiveTrigger } from "../Passive";
-import { RodOfAgesPassive } from "./RodOfAgesPassive";
+import { Timeless } from "./Timeless";
 
 export class Eternity extends Passive {
 	passiveName = "Eternity";
@@ -15,11 +15,11 @@ export class Eternity extends Passive {
 	private CAP = 20;
 
 	//for roa eternity
-	private roaPassive: RodOfAgesPassive | undefined;
-	private MSRATIO = .35;
-	private BUFFDURATION = 3;
-	private DECAYRATE = .25;
-	private DECAYAMOUNT = .25; //loses amount% every rate seconds
+	private roaPassive: Timeless | undefined;
+	//private MSRATIO = .35;
+	//private BUFFDURATION = 3;
+	//private DECAYRATE = .25;
+	//private DECAYAMOUNT = .25; //loses amount% every rate seconds
 	maxStacks = 200;
 
 	private buffStartTime = 0;
@@ -27,7 +27,7 @@ export class Eternity extends Passive {
 
 	private flatStat = 0;
 
-	constructor(primarySource: string, roaPassive?:RodOfAgesPassive) {
+	constructor(primarySource: string, roaPassive?:Timeless) {
 		super(primarySource);
 		this.roaPassive = roaPassive;
 	}
@@ -36,17 +36,17 @@ export class Eternity extends Passive {
 		if (sourceChamp.resourceType === ResourceType.Mana) {
 			let multiplier: number = (this.roaPassive?.eternityMultiplier ?? 1);
 			switch (trigger) {
-				case PassiveTrigger.IndependentStat:
-					if (this.buffEndTime >= time!) {
-						let statBuild = sourceChamp?.statBuild!;
-						//as decay is of current amount, multiply the decay multi for every rate seconds has occured
-						let decayMulti = (1 - (this.DECAYAMOUNT)) ^ (Math.floor((time! - this.buffStartTime) / this.DECAYRATE));
-
-						let bonusMS = (this.MSRATIO * decayMulti);
-						statBuild.addStatShare(Stat.MoveSpeedPercent, bonusMS, false, StatMathType.PercAdditive, this.primarySource, this.passiveName);
-
-					}
-					break;
+				//case PassiveTrigger.IndependentStat:
+				//	if (this.buffEndTime >= time!) {
+				//		let statBuild = sourceChamp?.statBuild!;
+				//		//as decay is of current amount, multiply the decay multi for every rate seconds has occured
+				//		let decayMulti = (1 - (this.DECAYAMOUNT)) ^ (Math.floor((time! - this.buffStartTime) / this.DECAYRATE));
+				//
+				//		let bonusMS = (this.MSRATIO * decayMulti);
+				//		statBuild.addStatShare(Stat.MoveSpeedPercent, bonusMS, false, StatMathType.PercAdditive, this.primarySource, this.passiveName);
+				//
+				//	}
+				//	break;
 				case PassiveTrigger.OnAbilityCast:
 					//console.log("mana used: " + sourceChamp.resourceUsed);
 					if (sourceChamp.resourceUsed > 0) {
@@ -63,7 +63,7 @@ export class Eternity extends Passive {
 					break;
 
 				case PassiveTrigger.OnDamageTaken:
-					let manaRegen = Math.min(this.CAP * multiplier, damageInst!.preMitigation * this.MANAREGENRATIO * multiplier);
+					let manaRegen = damageInst!.preMitigation * this.MANAREGENRATIO * multiplier;
 					sourceChamp.currentResource = Math.min(sourceChamp.currentResource + manaRegen, sourceChamp.statBuild!.getTotalStat(Stat.Mana));
 					if (this.primarySource === "Rod of Ages") {
 						//tracks overflow
@@ -72,16 +72,16 @@ export class Eternity extends Passive {
 					}
 					break;
 
-				case PassiveTrigger.OnTick:
-					if (this.buffEndTime > time!) {
-						if ((time! - this.buffStartTime) % this.DECAYRATE < TICKTIME) {
-							sourceChamp.statBuild!.updateStats(sourceChamp);
-						}
-					} else if (this.buffStartTime > 0) {
-						this.buffStartTime = 0;
-						sourceChamp.statBuild!.updateStats(sourceChamp);
-					}
-					break;
+				//case PassiveTrigger.OnTick:
+				//	if (this.buffEndTime > time!) {
+				//		if ((time! - this.buffStartTime) % this.DECAYRATE < TICKTIME) {
+				//			sourceChamp.statBuild!.updateStats(sourceChamp);
+				//		}
+				//	} else if (this.buffStartTime > 0) {
+				//		this.buffStartTime = 0;
+				//		sourceChamp.statBuild!.updateStats(sourceChamp);
+				//	}
+				//	break;
 
 				case PassiveTrigger.Reset:
 					this.buffStartTime = 0;
@@ -95,8 +95,8 @@ export class Eternity extends Passive {
 	private checkStacks(time: number, multiplier: number) {
 		if (this.currentStacks > this.maxStacks) {
 			this.currentStacks = 0;
-			this.buffStartTime = time;
-			this.buffEndTime = this.BUFFDURATION * multiplier;
+			//this.buffStartTime = time;
+			//this.buffEndTime = this.BUFFDURATION * multiplier;
 		}
 	}
 
@@ -117,7 +117,7 @@ export class Eternity extends Passive {
 					{this.FloatPrecision(this.HEALRATIO * multiplier * 100,1)}% <StatIcon stat={Stat.Mana} /> Mana spent
 				</span>
 				, up to {this.CAP * multiplier} per cast. Toggled abilities can only heal up to {this.CAP * multiplier} per second.
-				{(this.primarySource === RodOfAges.itemName) && (
+				{/*(this.primarySource === RodOfAges.itemName) && (
 					<span>
 						{" "}For every 200 <span className="TextHeal">healing</span> or <span className={Stat[Stat.Mana]}>mana</span> restored this way, gain{" "}
 						<span className={Stat[Stat.MoveSpeed]}>
@@ -125,7 +125,7 @@ export class Eternity extends Passive {
 						</span>
 						that decays over {this.BUFFDURATION} seconds.
 					</span>
-				)}
+				)*/}
 			</span>
 		);
 	}

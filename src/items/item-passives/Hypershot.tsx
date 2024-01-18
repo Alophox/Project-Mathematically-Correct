@@ -6,20 +6,20 @@ import { Passive, PassiveTrigger } from "../Passive";
 
 export class Hypershot extends Passive {
 	passiveName = "Hypershot";
-	additionalTip = "The Ability that procs this also benefits from the damage increase. Pets and non-immobilizing traps do not proc this effect.";
+	additionalTip = "The Ability that procs this also benefits from the damage increase. Pets and non-immobilizing traps do not proc this effect. Due to rather static nature of champion positions in this calculator, ALL abilities with max range >= trigger range will have this effect.";
 	//following are total over duration
 	static DAMAGERATIO = .1;
 
 	static DURATION = 6;
 
 	TRIGGERRANGE = 700;
-	TRIGGERTARGETTING = Targeting.SkillShot;
-	TRIGGERCC = CC.Immobilizing | CC.Slow;
+	//TRIGGERTARGETTING = Targeting.SkillShot;
+	//TRIGGERCC = CC.Immobilizing | CC.Slow;
 
 	public trigger(trigger: PassiveTrigger, sourceChamp?: Champion, time?: number, damageInst?: DamageInstance): void {
 		if (trigger === PassiveTrigger.OnAbilityDamage) {
 			if (!(damageInst!.damageTags & DamageTag.Pet)) {
-				if (damageInst!.distanceFromCast(damageInst!.targetChamp) >= this.TRIGGERRANGE || (damageInst!.netCC.includes(this.TRIGGERCC))) {
+				if (damageInst!.distanceFromCast(damageInst!.targetChamp) >= this.TRIGGERRANGE || damageInst!.maxRange >= this.TRIGGERRANGE) {
 
 					
 					if (damageInst!.targetChamp.addBuff(new HypershotDebuff(this.primarySource, time!, damageInst!.sourceChamp), damageInst!.sourceChamp.championName)) {

@@ -1,10 +1,9 @@
 import { Item, ItemCategory, ItemRestrictions, ItemType } from '../Item';
 import { Stat } from '../../Stat';
 import { Passive } from '../Passive';
-import { AmplifyingTome } from './AmplifyingTome';
 import { HextechAlternator } from './HextechAlternator';
-import { BlastingWand } from './BlastingWand';
 import { Supersonic } from '../item-passives/Supersonic';
+import { Kindlegem } from './Kindlegem';
 
 export abstract class HextechRocketbelt extends Item {
 	static itemName = "Hextech Rocketbelt";
@@ -13,26 +12,24 @@ export abstract class HextechRocketbelt extends Item {
 		"rocket belt",
 	);
 	static image = "Hextech_Rocketbelt_item.webp"
-	static type = ItemType.Mythic;
+	static type = ItemType.Legendary;
 	static stats = new Map<Stat, number>([
-		[Stat.Cost, 3200],
-		[Stat.AbilityPower, 90],
-		[Stat.MagicPenetrationFlat, 6],
-		[Stat.Health, 250],
+		[Stat.Cost, 2500],
+		[Stat.AbilityPower, 60],
+		[Stat.Health, 300],
 		[Stat.AbilityHaste, 15],
 	]);
 	static components = new Array<Item>([
 		HextechAlternator,
-		BlastingWand,
-		AmplifyingTome,
+		Kindlegem,
 	]);
-	static restrictions = ItemRestrictions.Mythic;
+	static restrictions = ItemRestrictions.None;
 	static itemCategory = ItemCategory.Mage;
 	static passives = new Array<Passive>(
 		new Supersonic(this.itemName),
 	);
-	static mythicStats = new Map<Stat, number>([
-		[Stat.MagicPenetrationFlat, 5]
-	]);
+	//static mythicStats = new Map<Stat, number>([
+	//	[Stat.MagicPenetrationFlat, 5]
+	//]);
 	static additionalTip = "Supersonic resets the Attack cooldown- however that is not currently implemented in this calculator.";
 }

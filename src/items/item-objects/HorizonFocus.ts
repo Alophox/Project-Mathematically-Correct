@@ -10,10 +10,9 @@ export abstract class HorizonFocus extends Item {
 	static image = "Horizon_Focus_item_HD.webp"
 	static type = ItemType.Legendary;
 	static stats = new Map<Stat, number>([
-		[Stat.Cost, 3000],
-		[Stat.AbilityPower, 100],
-		[Stat.Health, 150],
-		[Stat.AbilityHaste, 15],
+		[Stat.Cost, 2700],
+		[Stat.AbilityPower, 90],
+		[Stat.AbilityHaste, 20],
 	]);
 	static components = new Array<Item>(
 		HextechAlternator,

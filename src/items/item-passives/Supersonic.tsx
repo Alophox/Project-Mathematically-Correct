@@ -12,8 +12,8 @@ export class Supersonic extends Passive {
 	APRATIO = .15;
 	FLATDAMAGE = 125;
 	COOLDOWN = 40;
-	BUFFDURATION = 1.5;
-	MSRATIO = .3;
+	//BUFFDURATION = 1.5;
+	//MSRATIO = .3;
 	CASTTIME = .5;
 	RANGE = 1200;
 	PROJSPEED = 1550; /**@estimate */
@@ -24,18 +24,18 @@ export class Supersonic extends Passive {
 	flatStat = 0;
 	public trigger(trigger: PassiveTrigger, sourceChampion?: Champion, time?: number, damageInst?: DamageInstance): void {
 		switch (trigger) {
-			case PassiveTrigger.IndependentStat:
-				if (this.buffTime !== 0) {
-					let bonusMS = this.MSRATIO * this.flatStat;
-					sourceChampion!.statBuild?.addStatShare(Stat.MoveSpeed, bonusMS, false, StatMathType.PercAdditive, this.primarySource, this.passiveName);
-				}
-				break;
-			case PassiveTrigger.OnTick:
-				if (this.buffTime > 0 && this.buffTime < time!) {
-					this.buffTime = 0;
-					sourceChampion!.statBuild!.updateStats(sourceChampion!);
-				}
-				break;
+			//case PassiveTrigger.IndependentStat:
+			//	if (this.buffTime !== 0) {
+			//		let bonusMS = this.MSRATIO * this.flatStat;
+			//		sourceChampion!.statBuild?.addStatShare(Stat.MoveSpeed, bonusMS, false, StatMathType.PercAdditive, this.primarySource, this.passiveName);
+			//	}
+			//	break;
+			//case PassiveTrigger.OnTick:
+			//	if (this.buffTime > 0 && this.buffTime < time!) {
+			//		this.buffTime = 0;
+			//		sourceChampion!.statBuild!.updateStats(sourceChampion!);
+			//	}
+			//	break;
 			case PassiveTrigger.Reset:
 				this.cooldownTime = 0;
 				this.buffTime = 0;
@@ -68,7 +68,7 @@ export class Supersonic extends Passive {
 				return (position1(time)!) * direction >= sourceChamp.champPos + projRange;
 			};
 
-			damageInst1.setBehaviour(this.CASTTIME, position1, sourceChamp.champPos, expiration1);
+			damageInst1.setBehaviour(this.CASTTIME, position1, sourceChamp.champPos, this.RANGE, expiration1);
 
 			castBuffer.push(damageInst1);
 
@@ -85,7 +85,7 @@ export class Supersonic extends Passive {
 
 	DescriptionElement = (statBuild?: StatBuild) => {
 		let apDamage = (this.APRATIO * (statBuild?.getTotalStat(Stat.AbilityPower) ?? 0));
-		let bonusMS = this.MSRATIO * (statBuild?.getTotalStat(Stat.MoveSpeed) ?? 0);
+		//let bonusMS = this.MSRATIO * (statBuild?.getTotalStat(Stat.MoveSpeed) ?? 0);
 		return (
 			<span>
 				[Active] Dash 125-275 units in a direction and fire rockets that deal{" "}
@@ -101,11 +101,7 @@ export class Supersonic extends Passive {
 				</span>
 				to the first enemies hit.
 				<br/>
-				Additionally gain
-				<span className={Stat[Stat.MoveSpeed]}>
-					{this.MSRATIO * 100}% <StatIcon stat={Stat.MoveSpeed} /> Move Speed{this.EnhancedText(" (" + bonusMS + ")", statBuild)}{" "}
-				</span>
-				while facing enemy Champions within 2000 units({this.COOLDOWN * (1 - (statBuild?.getCDR(CDRType.Item) ?? 0))}s <StatIcon stat={Stat.Cooldown} /> cooldown).
+				({this.COOLDOWN * (1 - (statBuild?.getCDR(CDRType.Item) ?? 0))}s <StatIcon stat={Stat.Cooldown} /> cooldown).
 			</span>
 		);
 	}

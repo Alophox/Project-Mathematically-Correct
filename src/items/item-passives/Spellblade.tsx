@@ -26,7 +26,7 @@ export class Spellblade extends Passive {
 	passiveName = "Spellblade";
 	sources: SpellbladeSource;
 
-	additionalTip = "Spellblade Passives from multiple sources will stack everything EXCEPT damage, which is overriden by the highest priority item. See wiki for details.";
+	//additionalTip = "Spellblade Passives from multiple sources will stack everything EXCEPT damage, which is overriden by the highest priority item. See wiki for details.";
 
 	constructor(primarySource: string, source:SpellbladeSource) {
 		super(primarySource);
@@ -40,7 +40,7 @@ export class Spellblade extends Passive {
 			BASEADRATIO: 1,
 		},
 		lichBane: {
-			BASEADRATIO: .75,
+			BASEADRATIO: 1,
 			APRATIO: .5,
 		}
 
@@ -50,7 +50,7 @@ export class Spellblade extends Passive {
 	cooldownTime: number = 0;
 	private damageAmount(sourceChamp: Champion): number {
 		switch (this.primarySource) {
-			case Sheen.itemName:
+			case "Sheen":
 				return this.props.sheen.BASEADRATIO * sourceChamp.statBuild!.getBaseStat(Stat.AttackDamage);
 			default:
 				return 0;
@@ -83,7 +83,7 @@ export class Spellblade extends Passive {
 					//		damageInst1 = new DamageInstance(damageInst!.sourceChamp, damageInst!.targetChamp, this.passiveName, DamageType.Physical, damage, time!, damageInst!.castInstance, DamageTag.Item | DamageTag.Proc);
 					//		//do slow
 					//		break;
-						case LichBane.itemName:
+						case "Lich Bane":
 							damage = this.props.lichBane.BASEADRATIO * statBuild.getBaseStat(Stat.AttackDamage) + this.props.lichBane.APRATIO * statBuild.getTotalStat(Stat.AbilityPower);
 							damageInst1 = new DamageInstance(damageInst!.sourceChamp, damageInst!.targetChamp, this.passiveName, DamageType.Magic, damage, time!, damageInst!.castInstance, DamageTag.Item | DamageTag.Proc);
 
@@ -139,7 +139,7 @@ export class Spellblade extends Passive {
 	private descriptionDamage(statBuild?: StatBuild): JSX.Element {
 		let damage: number;
 		switch (this.primarySource) {
-			case Sheen.itemName:
+			case "Sheen":
 				damage = (statBuild?.getBaseStat(Stat.AttackDamage) ?? 0) * this.props.sheen.BASEADRATIO;
 				return (
 					<span>
@@ -156,7 +156,7 @@ export class Spellblade extends Passive {
 						to the target({this.props.COOLDOWN * (1 - (statBuild?.getCDR(CDRType.Item) ?? 0))}s <StatIcon stat={Stat.Cooldown} /> cooldown).
 					</span>
 				);
-			case LichBane.itemName:
+			case "Lich Bane":
 				damage = (statBuild?.getBaseStat(Stat.AttackDamage) ?? 0) * this.props.lichBane.BASEADRATIO + + this.props.lichBane.APRATIO * (statBuild?.getTotalStat(Stat.AbilityPower) ?? 0);
 				return (
 					<span>

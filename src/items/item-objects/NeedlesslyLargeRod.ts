@@ -10,7 +10,7 @@ export abstract class NeedlesslyLargeRod extends Item {
 	static type = ItemType.Basic;
 	static stats = new Map<Stat, number>([
 		[Stat.Cost, 1250],
-		[Stat.AbilityPower, 60]
+		[Stat.AbilityPower, 70]
 	]);
 	//static components = [];
 	//static restrictions = ItemRestrictions.None;

@@ -4,6 +4,7 @@ import { AmplifyingTome } from './AmplifyingTome';
 import { SapphireCrystal } from './SapphireCrystal';
 import { Passive } from '../Passive';
 import { Enlighten } from '../item-passives/Enlighten';
+import { GlowingMote } from './GlowingMote';
 
 export abstract class LostChapter extends Item {
 	static itemName = "Lost Chapter";
@@ -13,16 +14,17 @@ export abstract class LostChapter extends Item {
 	static image = "Lost_Chapter_item_HD.webp"
 	static type = ItemType.Epic;
 	static stats = new Map<Stat, number>([
-		[Stat.Cost, 1100],
+		[Stat.Cost, 1200],
 		[Stat.AbilityPower, 40],
 		[Stat.Mana, 300],
 		[Stat.AbilityHaste, 10]
 	]);
 	static components = new Array<Item>(
 		AmplifyingTome,
-		SapphireCrystal
+		SapphireCrystal,
+		GlowingMote
 	);
-	static restrictions = ItemRestrictions.MythicComponent;
+	static restrictions = ItemRestrictions.None;
 	static itemCategory = ItemCategory.Mage;
 	static passives = new Array<Passive>(
 		new Enlighten(this.itemName),

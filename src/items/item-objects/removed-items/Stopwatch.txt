@@ -1,7 +1,7 @@
 import { Item, ItemCategory, ItemRestrictions, ItemType } from '../Item';
 import { Stat } from '../../Stat';
 import { Passive } from '../Passive';
-import { Stasis } from '../item-passives/Stasis';
+import { TimeStop } from '../item-passives/TimeStop';
 
 export abstract class Stopwatch extends Item {
 	static itemName = "Stopwatch";
@@ -19,7 +19,7 @@ export abstract class Stopwatch extends Item {
 	//static restrictions = ;
 	static itemCategory = ItemCategory.Marksman | ItemCategory.Assassin | ItemCategory.Mage;
 	static passives = new Array<Passive>(
-		new Stasis(this.itemName),
+		new TimeStop(this.itemName),
 	);
 
 	static additionalTip = "Stopwatch cannot be purchased if a Guardian Angel or a Zhonya's Hourglass is owned(you can still complete the other item)."

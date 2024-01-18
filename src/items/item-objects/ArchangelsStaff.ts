@@ -2,12 +2,12 @@ import { Stat } from '../../Stat';
 import { Passive } from '../Passive';
 import { ManaCharge } from '../item-passives/ManaCharge';
 import { TearOfTheGoddess } from './TearOfTheGoddess';
-import { Kindlegem } from './Kindlegem';
-import { NeedlesslyLargeRod } from './NeedlesslyLargeRod';
-import { Item, ItemCategory, ItemRestrictions, ItemType } from '../Item';
+import { ItemCategory, ItemRestrictions, ItemType } from '../Item';
 import { Awe } from '../item-passives/Awe';
 import { UpgradeableItem } from '../UpgradableItem';
 import { Lifeline } from '../item-passives/Lifeline';
+import { LostChapter } from './LostChapter';
+import { FiendishCodex } from './FiendishCodex';
 
 export abstract class ArchangelsStaff extends UpgradeableItem {
 	static baseName = "Archangel's Staff";
@@ -40,26 +40,24 @@ export abstract class ArchangelsStaff extends UpgradeableItem {
 		if (ManaCharge.INITIALSTACKS < ManaCharge.MAXSTACKS) {
 			return new Map<Stat, number>([
 				[Stat.Cost, 3000],
-				[Stat.AbilityPower, 70],
-				[Stat.Health, 200],
-				[Stat.Mana, 500],
-				[Stat.AbilityHaste, 10],
+				[Stat.AbilityPower, 80],
+				[Stat.Mana, 600],
+				[Stat.AbilityHaste, 20],
 			]);
 		} else {
 			return new Map<Stat, number>([
 				[Stat.Cost, 3000],
-				[Stat.AbilityPower, 70],
-				[Stat.Health, 200],
-				[Stat.Mana, 860],
-				[Stat.AbilityHaste, 10],
+				[Stat.AbilityPower, 80],
+				[Stat.Mana, 1000],
+				[Stat.AbilityHaste, 20],
 			]);
 		}
 		
 	}
 	static components = [
+		LostChapter,
 		TearOfTheGoddess,
-		Kindlegem,
-		NeedlesslyLargeRod,
+		FiendishCodex,
 	];
 	static restrictions = ItemRestrictions.Lifeline | ItemRestrictions.ManaCharge;
 	static itemCategory = ItemCategory.Mage;

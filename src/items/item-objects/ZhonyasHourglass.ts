@@ -1,10 +1,9 @@
 import { Item, ItemCategory, ItemRestrictions, ItemType } from '../Item';
 import { Stat } from '../../Stat';
 import { Passive } from '../Passive';
-import { FiendishCodex } from './FiendishCodex';
 import { SeekersArmguard } from './SeekersArmguard';
-import { Stopwatch } from './Stopwatch';
-import { Stasis } from '../item-passives/Stasis';
+import { TimeStop } from '../item-passives/TimeStop';
+import { NeedlesslyLargeRod } from './NeedlesslyLargeRod';
 
 export abstract class ZhonyasHourglass extends Item {
 	static itemName = "Zhonya's Hourglass";
@@ -16,20 +15,18 @@ export abstract class ZhonyasHourglass extends Item {
 	static image = "Zhonya's_Hourglass_item_HD.webp"
 	static type = ItemType.Legendary;
 	static stats = new Map<Stat, number>([
-		[Stat.Cost, 3000],
-		[Stat.AbilityPower, 80],
-		[Stat.Armor, 45],
-		[Stat.AbilityHaste, 15],
+		[Stat.Cost, 3250],
+		[Stat.AbilityPower, 120],
+		[Stat.Armor, 50],
 	]);
 	static components = [
-		FiendishCodex,
+		NeedlesslyLargeRod,
 		SeekersArmguard,
-		Stopwatch,
 	];
 	//static restrictions = Item.ItemRestrictions.None;
 	static itemCategory = ItemCategory.Mage;
 	static passives = new Array<Passive>(
-		new Stasis(this.itemName),
+		new TimeStop(this.itemName),
 	);
-	//tatic additionalTip = "";
+	//static additionalTip = "";
 }

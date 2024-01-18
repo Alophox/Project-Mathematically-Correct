@@ -3,7 +3,7 @@ import { Stat } from '../../Stat';
 import { AmplifyingTome } from './AmplifyingTome';
 import { Passive } from '../Passive';
 import { ClothArmor } from './ClothArmor';
-import { WitchsPath } from '../item-passives/WitchsPath';
+import { TimeStop } from '../item-passives/TimeStop';
 
 export abstract class SeekersArmguard extends Item {
 	static itemName = "Seeker's Armguard";
@@ -11,18 +11,19 @@ export abstract class SeekersArmguard extends Item {
 	static image = "Seeker's_Armguard_item_HD.webp";
 	static type = ItemType.Epic;
 	static stats = new Map<Stat, number>([
-		[Stat.Cost, 1000],
-		[Stat.AbilityPower, 30],
-		[Stat.Armor, 15]
+		[Stat.Cost, 1600],
+		[Stat.AbilityPower, 45],
+		[Stat.Armor, 25]
 	]);
 	static components = new Array<Item>([
 		AmplifyingTome,
-		ClothArmor
+		ClothArmor,
+		AmplifyingTome
 	]);
 	//static restrictions = ;
 	static itemCategory = ItemCategory.Mage;
 	static passives = new Array<Passive>(
-		new WitchsPath(this.itemName),
+		new TimeStop(this.itemName),
 	);
 	//public static stackable = this.passives[0];
 }

@@ -6,8 +6,8 @@ import { StatIcon } from "../../icons/TextIcon";
 import { Stat } from "../../Stat";
 import { Passive, PassiveTrigger } from "../Passive";
 
-export class Drain extends Passive {
-	passiveName = "Drain";
+export class Restoration extends Passive {
+	passiveName = "Restoration";
 
 	private BASEMANARESTORED = 1;
 	private ENHANCEDMANARESTORED = 1.5;

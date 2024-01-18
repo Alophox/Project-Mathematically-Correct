@@ -7,7 +7,7 @@ import { Passive, PassiveTrigger } from "../Passive";
 
 export class MagicalOpus extends Passive {
 	passiveName = "Magical Opus";
-	private APRATIO = .4;
+	private APRATIO = .35;
 	private flatStat: number = 0;
 	private bonusAP: number = 0;
 	public trigger(trigger: PassiveTrigger, sourceChampion?: Champion): void {

@@ -1,6 +1,4 @@
 import { Stat } from '../../Stat';
-import { Passive } from '../Passive';
-import { Annul } from '../item-passives/Annul';
 import { FiendishCodex } from './FiendishCodex';
 import { VerdantBarrier } from './VerdantBarrier';
 import { Item, ItemCategory, ItemType } from '../Item';
@@ -22,8 +20,6 @@ export abstract class AbyssakMask extends Item {
 	];
 	//static restrictions = ItemRestrictions.None;
 	static itemCategory = ItemCategory.Mage;
-	static passives = new Array<Passive>(
-		new Annul(this.itemName),
-	);
-	static additionalTip = "Annul currently has no impact on any calculations.";
+	//static passives = new Array<Passive>();
+	//static additionalTip = "Annul currently has no impact on any calculations.";
 }

@@ -2,22 +2,24 @@ import { DamageInstance } from "../../builds/DamageInstance";
 import { TICKTIME } from "../../builds/ServerConstants";
 import { StatBuild, StatMathType } from "../../builds/StatBuild";
 import { Champion } from "../../champions/Champion";
-import { StatIcon } from "../../icons/TextIcon";
+import { StatIcon, TextIcon } from "../../icons/TextIcon";
 import { Stat } from "../../Stat";
-import { CosmicDrive } from "../item-objects";
 import { Passive, PassiveTrigger } from "../Passive";
 
 export class SpellDance extends Passive {
 	passiveName = "Spelldance";
 	public static image = "Cosmic_Drive_item_HD.webp";
-	public static MAXSTACKS = 4;
+	//public static MAXSTACKS = 4;
 	//triggers = PassiveTrigger.OnDamageDealt;
-	private MSRATIOPERSTACK = .025;
+	//private MSRATIOPERSTACK = .025;
 	private flatStat: number = 0;
 
-	private STACKDURATION: number = 1.5;
+	private BASEMS: number = 25;
+	private MAXMS: number = 60;
 
-	private MAXDURATION: number = 5;
+	//private STACKDURATION: number = 1.5;
+
+	private MAXDURATION: number = 2;
 	private startTime: number = 0;
 	private endTime: number = 0;
 
@@ -25,8 +27,11 @@ export class SpellDance extends Passive {
 		let statBuild = sourceChamp?.statBuild;
 		switch (trigger) {
 			case PassiveTrigger.IndependentStat:
-				let bonusMS = (this.MSRATIOPERSTACK * this.currentStacks * (this.currentStacks === SpellDance.MAXSTACKS ? 2 : 1));
-				statBuild?.addStatShare(Stat.MoveSpeedPercent, bonusMS, false, StatMathType.Flat, this.primarySource, this.passiveName);
+				if (this.endTime > time!) {
+					let bonusMS = sourceChamp!.abilityNumber(sourceChamp!.level, this.BASEMS, (this.MAXMS - this.BASEMS) / 17);
+					statBuild?.addStatShare(Stat.MoveSpeedFlat, bonusMS, false, StatMathType.Flat, this.primarySource, this.passiveName);
+				}
+				
 				break;
 			case PassiveTrigger.OnDamageDealt:
 				if (this.endTime < time!) {
@@ -38,14 +43,14 @@ export class SpellDance extends Passive {
 			case PassiveTrigger.OnTick:
 				//passive tick stuff
 				if ((time!) >= this.endTime) {
-					this.currentStacks = 0;
 					statBuild!.updateStats(sourceChamp!);
-				} else if (((time! - this.startTime) % this.STACKDURATION) < TICKTIME) {
-					if (this.currentStacks < SpellDance.MAXSTACKS) {
-						this.currentStacks++;
-						statBuild!.updateStats(sourceChamp!);
-					}
 				}
+				//else if (((time! - this.startTime) % this.STACKDURATION) < TICKTIME) {
+				//	if (this.currentStacks < SpellDance.MAXSTACKS) {
+				//		this.currentStacks++;
+				//		statBuild!.updateStats(sourceChamp!);
+				//	}
+				//}
 				break;
 			case PassiveTrigger.Reset:
 				this.endTime = 0;
@@ -58,21 +63,15 @@ export class SpellDance extends Passive {
 
 	DescriptionElement = (statBuild?: StatBuild) => {
 		this.flatStat = statBuild?.statNetMap.get(Stat.MoveSpeed)?.flatStat ?? 0;
-		let bonusMS = (this.MSRATIOPERSTACK) * (this.flatStat);
+		let bonusMS = statBuild != undefined ? this.LevelScaler(this.BASEMS, this.MAXMS, statBuild?.champLevel) : 0;
 		return (
 			<span>
-				Damaging a champion generates a stack of{" "}
+				Damaging a champion with an ability grants{" "}
 				<span className={Stat[Stat.MoveSpeed]}>
-					2.5% <StatIcon stat={Stat.MoveSpeed} />{this.EnhancedText(" (" + bonusMS + ")", statBuild)} Move Speed{" "}
+					{this.EnhancedText(this.FloatPrecision(bonusMS, 2) + " = ", statBuild)}(
+					{this.BASEMS} to {this.MAXMS} <TextIcon iconName={"Level"} /> (based on level)) <StatIcon stat={Stat.MoveSpeed} /> Move Speed{" "}
 				</span>
-				every 1.5 seconds for the next 5 seconds up to{" "}
-				<span className={Stat[Stat.MoveSpeed]}>
-					10% <StatIcon stat={Stat.MoveSpeed} /> {this.EnhancedText("(" + (bonusMS * 4) + ")", statBuild)}
-				</span>.{" "}
-				At 4 stacks, gain an additional{" "}
-				<span className={Stat[Stat.MoveSpeed]}>
-					10% <StatIcon stat={Stat.MoveSpeed} /> (20% <StatIcon stat={Stat.MoveSpeed} /> {this.EnhancedText("(" + (bonusMS * 8) + ")", statBuild)} total)
-				</span>.{" "}
+				for 2 seconds.{" "}
 				Dealing damage refreshes this effect.
 			</span>
 		)

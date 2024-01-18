@@ -13,8 +13,8 @@ export abstract class NashorsTooth extends Item {
 	static image = "Nashor's_Tooth_item_HD.webp"
 	static type = ItemType.Legendary;
 	static stats = new Map<Stat, number>([
-		[Stat.Cost, 3200],
-		[Stat.AbilityPower, 100],
+		[Stat.Cost, 3000],
+		[Stat.AbilityPower, 90],
 		[Stat.AttackSpeed, .5],
 		[Stat.AbilityHaste, 15],
 	]);

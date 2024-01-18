@@ -35,7 +35,7 @@ export class TargetDummy extends Champion {
 		[Stat.Armor, 0],
 		[Stat.MagicResist, 0],
 	]);
-	public readonly resourceType = ResourceType.Mana;
+	public readonly resourceType = ResourceType.None;
 
 	//some stats are utilized only within the champion
 	//protected readonly baseAttackSpeed = .668;

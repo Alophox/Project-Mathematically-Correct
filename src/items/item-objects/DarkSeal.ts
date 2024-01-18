@@ -1,8 +1,8 @@
 import { Stat } from '../../Stat';
 import { Passive } from '../Passive';
 import { Item, ItemCategory, ItemRestrictions, ItemType } from '../Item';
-import { Glory } from '../item-passives/Glory';
-import { Dread } from '../item-passives/Dread';
+import { Dread, Glory } from '../item-passives';
+
 
 export abstract class DarkSeal extends Item {
 	static itemName = "Dark Seal";
@@ -14,7 +14,7 @@ export abstract class DarkSeal extends Item {
 	static stats = new Map<Stat, number>([
 		[Stat.Cost, 350],
 		[Stat.AbilityPower, 15],
-		[Stat.Health, 40],
+		[Stat.Health, 50],
 	]);
 	//static components = [];
 	static restrictions = ItemRestrictions.Glory;

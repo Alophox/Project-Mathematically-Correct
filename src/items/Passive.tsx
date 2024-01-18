@@ -11,11 +11,14 @@ export enum PassiveTrigger {
 	IndependentStat, //aether wisp's glide, applied after item stats
 	DependentStat, //seraph's awe, applied after independent stats
 	CapstoneStat, //rabadon's magical opus, applied after everything else is done
+	ShredStatFlat, //flat shred
+	ShredStatPerc, //% shred
 	OnAttackCast, //guinsoos
 	OnAttackHit, //nashor's tooth, spellblade 2
 	OnAbilityCast, //spellblade 1
 	OnAbilityHit, //may remove- i don't actually think anything uses this?
 	OnAbilityDamage, //luden's
+	OnDamageHit, //cinderbloom
 	OnDamageDealt, //black cleaver, night harvester
 	OnDamageTaken, //lifeline
 	OnAttackTaken, //rock solid
@@ -58,6 +61,8 @@ export class Passive {
 
 	/**
 	 * some passives stack(spellblade other effects), others override(spellblade damage); this needs to be implemented in each passive itself
+	 * True to replace(with this)
+	 * False to not replace
 	 * @param otherPassive: another passive of the same type, ie Spellblade will only take another Spellblade
 	 */
 	public reconcile(otherPassive: this): boolean {
@@ -111,6 +116,18 @@ export class Passive {
 			</span>
 		);
 	}
+
+	/**
+	 * 
+	 * @param level1Stat stat at level 1
+	 * @param level18Stat stat at level 18
+	 * @param level current champ level
+	 * @returns
+	 */
+	protected LevelScaler(level1Stat: number, level18Stat: number, level: number): number {
+		return level1Stat + ((level - 1) * ((level18Stat - level1Stat) / 17));
+	}
+
 
 	protected addDmgAndPenShares(baseDmg: number, secondarySource: string, damageInst: DamageInstance, statBuild:StatBuild) {
 		if (baseDmg > 0)

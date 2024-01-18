@@ -80,7 +80,7 @@ export class ChampBuildObject {
 		target.direction = -1;
 
 		//BURST
-//		console.log("BURST");
+	//	console.log("BURST");
 		champObj.init();
 		target.init();
 		let time;
@@ -88,11 +88,11 @@ export class ChampBuildObject {
 		* ticks go up, limit DPS time
 		* burstIndex goes up on successful cast
 		*/
-		for (time = 0; allyIndex < allyBurstSequence.length && time < dpsTime; time += TICKTIME) {
+		for (time = 0; (allyIndex < allyBurstSequence.length) && (time < dpsTime); time += TICKTIME) {
 			ability = allyBurstSequence.charAt(allyIndex);
 			//console.log(ability + " -> " + Ability[ability as keyof typeof Ability]);
 
-			//console.log("Tick: " + (time / TICKTIME).toFixed(0));
+			console.log("Tick: " + (time / TICKTIME).toFixed(0));
 
 			//if ability casts or is not an ability, returns true.
 			//non ability inputs consume a tick of time, however
@@ -113,14 +113,14 @@ export class ChampBuildObject {
 
 		remainingDamageTicks(time);
 
-		//console.log("calcBurst");
+	//	console.log("calcBurst");
 		this.statBuild.calcBurst(champObj.postCalcDamageInstances);
 
 		champObj.reset();
 		target.reset();
 
 		//DPS
-//		console.log("DPS");
+	//	console.log("DPS");
 		champObj.init();
 		target.init();
 		for (time = 0; time < dpsTime; time += TICKTIME) {
@@ -175,7 +175,7 @@ export class ChampBuildObject {
 			//Start Individual Abilities
 			time = 0;
 
-//			console.log("Start Individual Abilities");
+		//	console.log("Start Individual Abilities");
 
 			//Q
 			//console.log("Q");
@@ -238,17 +238,18 @@ export class ChampBuildObject {
 		/**
 		* stop attacking, but handle remaining damage
 		*/
-		function remainingDamageTicks(time: number) {
-			let timeTarget = time + 5;
-			for (time = time; time < timeTarget; time += TICKTIME) {
+		function remainingDamageTicks(startTime: number) {
+			let timeTarget = startTime + 5;
+			//console.log("Overtime");
+			for (let t = startTime; t < timeTarget; t += TICKTIME) {
 
-				//console.log("Tick: " + (time / TICKTIME).toFixed(0));
+				//console.log("Tick: " + (t / TICKTIME).toFixed(0));
 
-				champObj.combatTick(Ability.None, time, target);
-				target.combatTick(Ability.None, time, target);
+				champObj.combatTick(Ability.None, t, target);
+				target.combatTick(Ability.None, t, target);
 
-				champObj.handleDamageTick(time, true);
-				target.handleDamageTick(time, true);
+				champObj.handleDamageTick(t, true);
+				target.handleDamageTick(t, true);
 			}
 		}
 	}

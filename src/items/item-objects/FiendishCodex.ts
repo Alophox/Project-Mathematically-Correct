@@ -1,6 +1,7 @@
 import { Item, ItemCategory, ItemRestrictions, ItemType } from '../Item';
 import { Stat } from '../../Stat';
 import { AmplifyingTome } from './AmplifyingTome';
+import { GlowingMote } from './GlowingMote';
 export abstract class FiendishCodex extends Item {
 	static itemName = "Fiendish Codex";
 	static searchNames = new Array<string>(
@@ -14,7 +15,8 @@ export abstract class FiendishCodex extends Item {
 		[Stat.AbilityHaste, 10]
 	]);
 	static components = new Array<Item>(
-		AmplifyingTome
+		AmplifyingTome,
+		GlowingMote
 	);
 	//static restrictions = ;
 	static itemCategory = ItemCategory.Mage | ItemCategory.Support;

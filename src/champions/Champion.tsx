@@ -417,10 +417,10 @@ export abstract class Champion {
 	 * @param isPostTime if this is done in remainingDamageTicks()
 	 */
 	public handleDamageTick(time: number, isPostTime?: boolean) {
-		if (!(isPostTime ?? false)) {
+	//	if (!(isPostTime ?? false)) {
 			//console.log("trigggggered");
 			this.triggerPassives(PassiveTrigger.OnTick, time, undefined, this);
-		}
+	//	}
 			
 
 		this.handleDamageTickBuffer(time);
@@ -486,7 +486,20 @@ export abstract class Champion {
 	public handleDamageInst(damageInst: DamageInstance, time: number, canReduce:boolean = true) {
 		//console.log("ability hit: " + damageInst.instName + " for " + damageInst.preMitigation);
 
-		//on ability hit
+		//on hit and damaging
+		if (!(damageInst.damageTags === DamageTag.None)) {
+			//on hit
+			damageInst.sourceChamp.triggerPassives(PassiveTrigger.OnDamageHit, time, damageInst);
+			//on ability hit
+			if (damageInst.damageTags & DamageTag.ActiveSpell) {
+				damageInst.sourceChamp.triggerPassives(PassiveTrigger.OnAbilityHit, time, damageInst);
+			}
+			//on attack hit
+			if ((damageInst.damageTags & DamageTag.BasicAttack)) {
+				damageInst.sourceChamp.triggerPassives(PassiveTrigger.OnAttackHit, time, damageInst);
+			}
+		}
+
 
 		//resist
 		if (canReduce) {
@@ -503,10 +516,8 @@ export abstract class Champion {
 				damageInst.sourceChamp.triggerPassives(PassiveTrigger.OnAbilityDamage, time, damageInst);
 			}
 			//on attack damage
-			if ((damageInst.damageTags & DamageTag.BasicAttack)) {
-				damageInst.sourceChamp.triggerPassives(PassiveTrigger.OnAttackHit, time, damageInst);
-			}
-			//on damage
+			
+			//on damage- no longer modify damageInst from here
 			damageInst.sourceChamp.triggerPassives(PassiveTrigger.OnDamageDealt, time, damageInst);
 
 		}
@@ -767,6 +778,8 @@ export abstract class Champion {
 		damageInst.addStatShares(this.statBuild!.statNetMap.get(Stat.AttackDamage)?.totalStatShares, 1);
 		damageInst.applyLifestealEffectiveness = 1;
 
+		/**@todo crit*/
+
 		this.addBaseAndPenShares(0, "A", damageInst);
 
 		let windup = this.attackWindup;
@@ -779,7 +792,7 @@ export abstract class Champion {
 		} else {
 			position = function (time: number): number | undefined { return undefined };
 		}
-		damageInst.setBehaviour(windup, position, startPos);
+		damageInst.setBehaviour(windup, position, startPos, (this.baseStats.get(Stat.AttackRange) ?? 0));
 
 		this.castBuffer.push(damageInst);
 		this.castingTime = time + windup;
@@ -891,6 +904,8 @@ export abstract class Champion {
 	 * @param source
 	 */
 	public addBuff(buff: Passive, source?:string): boolean {
+		console.log(buff.passiveName);
+
 		if (source === undefined)
 			source = "any";
 		if (!this.buffBar.has(source)) {
@@ -898,9 +913,11 @@ export abstract class Champion {
 		} 
 		//reconcile multiple instances
 		if (this.buffBar.get(source)!.has(buff.passiveName)) {
+			console.log("reconcile")
 			this.buffBar.get(source)!.get(buff.passiveName)!.reconcile(buff);
 			return false;
 		} else { //else add cause its new
+			console.log("added buff");
 			this.buffBar.get(source)!.set(buff.passiveName, buff);
 			return true;
 		}

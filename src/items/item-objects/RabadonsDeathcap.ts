@@ -16,7 +16,7 @@ export abstract class RabadonsDeathcap extends Item {
 	static type = ItemType.Legendary;
 	static stats = new Map<Stat, number>([
 		[Stat.Cost, 3600],
-		[Stat.AbilityPower, 120]
+		[Stat.AbilityPower, 140]
 	]);
 	static components = new Array<Item>([
 		NeedlesslyLargeRod,

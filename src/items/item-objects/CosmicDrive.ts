@@ -1,10 +1,10 @@
-import { Item, ItemCategory, ItemRestrictions, ItemType } from '../Item';
+import { Item, ItemCategory, ItemType } from '../Item';
 import { Stat } from '../../Stat';
 import { Passive } from '../Passive';
 import { FiendishCodex } from './FiendishCodex';
 import { AetherWisp } from './AetherWisp';
-import { AmplifyingTome } from './AmplifyingTome';
 import { SpellDance } from '../item-passives/SpellDance';
+import { Kindlegem } from './Kindlegem';
 
 export abstract class CosmicDrive extends Item {
 	static itemName = "Cosmic Drive";
@@ -15,14 +15,15 @@ export abstract class CosmicDrive extends Item {
 	static type = ItemType.Legendary;
 	static stats = new Map<Stat, number>([
 		[Stat.Cost, 3000],
-		[Stat.AbilityPower, 100],
-		[Stat.AbilityHaste, 30],
+		[Stat.AbilityPower, 80],
+		[Stat.Health, 250],
+		[Stat.AbilityHaste, 25],
 		[Stat.MoveSpeedPercent, .05],
 	]);
 	static components = [
 		FiendishCodex,
 		AetherWisp,
-		AmplifyingTome,
+		Kindlegem,
 	];
 	//static restrictions = ItemRestrictions.None;
 	static itemCategory = ItemCategory.Mage;

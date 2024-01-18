@@ -9,7 +9,6 @@ export class Revved extends Passive {
 	passiveName = "Revved";
 	FLATMINDAMAGE = 50;
 	FLATMAXDAMAGE = 125;
-	FLATUPDAMAGE = (this.FLATMAXDAMAGE - this.FLATMINDAMAGE) / 17
 	COOLDOWN = 40;
 
 	cooldownTime = 0;
@@ -20,7 +19,7 @@ export class Revved extends Passive {
 				let statBuild = sourceChampion!.statBuild;
 				if (this.cooldownTime <= time!) {
 					this.cooldownTime = (time!) + this.COOLDOWN * (1 - statBuild!.getCDR(CDRType.Item));
-					let damage: number = this.FLATMINDAMAGE + this.FLATUPDAMAGE * (damageInst!.sourceChamp.level - 1);
+					let damage: number = this.LevelScaler(this.FLATMINDAMAGE, this.FLATMAXDAMAGE, sourceChampion!.level);
 
 					let damageInst1 = new DamageInstance(damageInst!.sourceChamp, damageInst!.targetChamp, this.passiveName, DamageType.Magic, damage, time!, damageInst!.castInstance, DamageTag.ActiveSpell);
 
@@ -36,7 +35,7 @@ export class Revved extends Passive {
 	}
 
 	DescriptionElement = (statBuild?: StatBuild) => {
-		let damage: number = this.FLATMINDAMAGE + this.FLATUPDAMAGE * ((statBuild?.champLevel ?? 1) - 1);
+		let damage: number = statBuild != undefined ? this.LevelScaler(this.FLATMINDAMAGE, this.FLATMAXDAMAGE, statBuild?.champLevel) : 0;
 		return (
 			<span>
 				Damaging an enemy Champion deals{" "}

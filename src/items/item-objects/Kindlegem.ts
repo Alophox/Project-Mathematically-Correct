@@ -1,6 +1,7 @@
 import { Item, ItemCategory, ItemRestrictions, ItemType } from '../Item';
 import { Stat } from '../../Stat';
 import { RubyCrystal } from './RubyCrystal';
+import { GlowingMote } from './GlowingMote';
 export abstract class Kindlegem extends Item {
 	static itemName = "Kindlegem";
 	//static searchNames = new Array<string>();
@@ -12,7 +13,8 @@ export abstract class Kindlegem extends Item {
 		[Stat.AbilityHaste, 10]
 	]);
 	static components = new Array<Item>(
-		RubyCrystal
+		RubyCrystal,
+		GlowingMote
 	);
 	//static restrictions = ;
 	static itemCategory = ItemCategory.Fighter | ItemCategory.Marksman | ItemCategory.Assassin | ItemCategory.Mage | ItemCategory.Tank | ItemCategory.Support;

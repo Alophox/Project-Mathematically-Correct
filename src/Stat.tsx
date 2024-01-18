@@ -64,6 +64,10 @@ export enum Stat {
 
 	SummonerSpellHaste,
 	SlowResist,
+
+	//item stats but found in passives, so I don't know what order it'd show in
+	UltimateAbilityHaste,
+
 	//other stats, not found in items
 	ItemHaste,
 	HealthRegen, //per 5 seconds
@@ -183,6 +187,7 @@ export function StatNameIconReplace(input: string): string {
 			break;
 		case Stat[Stat.ItemHaste]:
 		case Stat[Stat.SummonerSpellHaste]:
+		case Stat[Stat.UltimateAbilityHaste]:
 			input = Stat[Stat.AbilityHaste];
 			break;
 		case Stat[Stat.DuelingScore]:

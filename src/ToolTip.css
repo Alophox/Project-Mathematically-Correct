@@ -182,11 +182,11 @@
 .Mana,.BaseManaRegenPercent,.ManaRegen {
 	color: #189de7;
 }
-.AbilityHaste,.ItemHaste {
+.AbilityHaste,.ItemHaste,.UltimateAbilityHaste,.BasicAbilityHaste {
 	color: #ece8d3;
 }
 
-.LifeSteal,.OmniVamp,.PhysicalVamp,.SpellVamp {
+.LifeSteal,.Omnivamp,.PhysicalVamp,.SpellVamp {
 	color: #d31e3f;
 }
 .MoveSpeedFlat, .MoveSpeedPercent, .MoveSpeed, .AttackRange {

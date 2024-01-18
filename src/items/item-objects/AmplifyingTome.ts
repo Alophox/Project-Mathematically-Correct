@@ -10,7 +10,7 @@ export abstract class AmplifyingTome extends Item {
 	static image = "Amplifying_Tome_item_HD.webp"
 	static type = ItemType.Basic;
 	static stats = new Map<Stat, number>([
-		[Stat.Cost, 435],
+		[Stat.Cost, 400],
 		[Stat.AbilityPower, 20]
 	]);
 	//static components = [];

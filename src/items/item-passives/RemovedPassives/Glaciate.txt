@@ -46,7 +46,7 @@ export class Glaciate extends Passive {
 				//	return (position1(time)!) * dir >= startPos + abilityProps.PROJRANGE;
 				//};
 
-				damageInst1.setBehaviour(this.CASTTIME + this.CASTDELAY, position1, sourceChamp.champPos);
+				damageInst1.setBehaviour(this.CASTTIME + this.CASTDELAY, position1, sourceChamp.champPos, this.RANGE);
 
 				damageInst1.netCC = new NetCrowdControl(
 					new Array<CrowdControl>(

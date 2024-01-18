@@ -13,9 +13,8 @@ export abstract class HextechAlternator extends Item {
 	static image = "Hextech_Alternator_item.webp"
 	static type = ItemType.Epic;
 	static stats = new Map<Stat, number>([
-		[Stat.Cost, 1050],
-		[Stat.AbilityPower, 25],
-		[Stat.Health, 150],
+		[Stat.Cost, 1100],
+		[Stat.AbilityPower, 50],
 	]);
 	static components = new Array<Item>(
 		AmplifyingTome,

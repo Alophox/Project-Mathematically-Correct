@@ -23,6 +23,9 @@ function App() {
 //	console.log("app rerender");
 	return (
 		<div className="App">
+			<div className="UIPanel">
+				Up to date as of patch 14.1b. Disclaimer: Calculator strives for but will not be 100% correct, and some items could be bugged.
+			</div>
 			<div className="AppContainer">
 				<SelectorPanel
 					allyChamp={allyChamp}
