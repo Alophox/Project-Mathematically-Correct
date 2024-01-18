@@ -1,8 +1,8 @@
 {
   "files": {
-    "main.css": "/Project-Mathematically-Correct/static/css/main.ece5cf07.css",
-    "main.js": "/Project-Mathematically-Correct/static/js/main.a4594a75.js",
-    "static/js/787.87e96488.chunk.js": "/Project-Mathematically-Correct/static/js/787.87e96488.chunk.js",
+    "main.css": "/Project-Mathematically-Correct/static/css/main.e63164da.css",
+    "main.js": "/Project-Mathematically-Correct/static/js/main.bc2928ce.js",
+    "static/js/787.47e28863.chunk.js": "/Project-Mathematically-Correct/static/js/787.47e28863.chunk.js",
     "static/media/AsheSquare.webp": "/Project-Mathematically-Correct/static/media/AsheSquare.4cf2ac078e958d5244e3.webp",
     "static/media/AnnieSquare.webp": "/Project-Mathematically-Correct/static/media/AnnieSquare.7bd22c3eda88db6ac1a4.webp",
     "static/media/Target_Dummy_TFT_item.webp": "/Project-Mathematically-Correct/static/media/Target_Dummy_TFT_item.dec112fbc6e36b4b7961.webp",
@@ -42,8 +42,10 @@
     "static/media/Zhonya's_Hourglass_item_HD.webp": "/Project-Mathematically-Correct/static/media/Zhonya's_Hourglass_item_HD.852d8b1de25bec1adc91.webp",
     "static/media/Horizon_Focus_item_HD.webp": "/Project-Mathematically-Correct/static/media/Horizon_Focus_item_HD.9834cde3ec98673155d5.webp",
     "static/media/Icon_Melee.svg": "/Project-Mathematically-Correct/static/media/Icon_Melee.17de18c53c6bab9738ae.svg",
+    "static/media/Stormsurge_item_HD.webp": "/Project-Mathematically-Correct/static/media/Stormsurge_item_HD.b9c05de73ee5281b404b.webp",
     "static/media/Icon_MeleeUnselected.svg": "/Project-Mathematically-Correct/static/media/Icon_MeleeUnselected.e6e4c3deac0cd20ccbb4.svg",
     "static/media/Recurve_Bow_item.webp": "/Project-Mathematically-Correct/static/media/Recurve_Bow_item.ca076dfa1461fb145ca7.webp",
+    "static/media/Cryptbloom_item_HD.webp": "/Project-Mathematically-Correct/static/media/Cryptbloom_item_HD.acc8b532f995f0db0a90.webp",
     "static/media/Icon_Pen.svg": "/Project-Mathematically-Correct/static/media/Icon_Pen.374310d448fcf8df7aba.svg",
     "static/media/Null-Magic_Mantle_item.webp": "/Project-Mathematically-Correct/static/media/Null-Magic_Mantle_item.bf76fd406e13d07290f8.webp",
     "static/media/Rylai's_Crystal_Scepter_item_HD.webp": "/Project-Mathematically-Correct/static/media/Rylai's_Crystal_Scepter_item_HD.94604d56b87f8b955039.webp",
@@ -52,6 +54,7 @@
     "static/media/Leeching_Leer_item.webp": "/Project-Mathematically-Correct/static/media/Leeching_Leer_item.e40fdd52759ff7c115fe.webp",
     "static/media/Rod_of_Ages_item_HD.webp": "/Project-Mathematically-Correct/static/media/Rod_of_Ages_item_HD.e86c307c8666e80486fb.webp",
     "static/media/Icon_Armor.svg": "/Project-Mathematically-Correct/static/media/Icon_Armor.0785608af060824a2a3c.svg",
+    "static/media/Luden's_Companion_item_HD.webp": "/Project-Mathematically-Correct/static/media/Luden's_Companion_item_HD.32e6dcc836d4f2d7c608.webp",
     "static/media/Icon_EffectiveHealthPhysical.svg": "/Project-Mathematically-Correct/static/media/Icon_EffectiveHealthPhysical.cd5e022f1b32b53e836f.svg",
     "static/media/Kindlegem_item_HD.webp": "/Project-Mathematically-Correct/static/media/Kindlegem_item_HD.83dae843a6f04382f6ee.webp",
     "static/media/Icon_HealShieldPower.svg": "/Project-Mathematically-Correct/static/media/Icon_HealShieldPower.d1d88115e18738310c93.svg",
@@ -61,6 +64,7 @@
     "static/media/Seraph's_Embrace_item_HD.webp": "/Project-Mathematically-Correct/static/media/Seraph's_Embrace_item_HD.bf3c4282405041e18854.webp",
     "static/media/Mejai's_Soulstealer_item_HD.webp": "/Project-Mathematically-Correct/static/media/Mejai's_Soulstealer_item_HD.f164e88a86b8a76809a1.webp",
     "static/media/Shard_of_True_Ice_item_HD.webp": "/Project-Mathematically-Correct/static/media/Shard_of_True_Ice_item_HD.a0e0cb1e179136893a4a.webp",
+    "static/media/Haunting_Guise_item_HD.webp": "/Project-Mathematically-Correct/static/media/Haunting_Guise_item_HD.c3660eccbe80a020bf83.webp",
     "static/media/Icon_Vamp.svg": "/Project-Mathematically-Correct/static/media/Icon_Vamp.46d33d4aa03567e8cc07.svg",
     "static/media/Dark_Seal_item_HD.webp": "/Project-Mathematically-Correct/static/media/Dark_Seal_item_HD.d8bedfc1b2be6a628782.webp",
     "static/media/Negatron_Cloak_item_HD.webp": "/Project-Mathematically-Correct/static/media/Negatron_Cloak_item_HD.0affa88541da25f8342b.webp",
@@ -69,6 +73,7 @@
     "static/media/Boots_of_Swiftness_item_HD.webp": "/Project-Mathematically-Correct/static/media/Boots_of_Swiftness_item_HD.72184cae6a01c9884fc0.webp",
     "static/media/Icon_Tenacity.svg": "/Project-Mathematically-Correct/static/media/Icon_Tenacity.bde7266c607123a61772.svg",
     "static/media/Banshee's_Veil_item_HD.webp": "/Project-Mathematically-Correct/static/media/Banshee's_Veil_item_HD.1a8a0814d5603948137f.webp",
+    "static/media/Malignance_item_HD.webp": "/Project-Mathematically-Correct/static/media/Malignance_item_HD.807a2c3332014031b0f7.webp",
     "static/media/Icon_Burst.svg": "/Project-Mathematically-Correct/static/media/Icon_Burst.0c35f615f60e35a710d0.svg",
     "static/media/Icon_AttackSpeed.svg": "/Project-Mathematically-Correct/static/media/Icon_AttackSpeed.45983573ae1eafb774e0.svg",
     "static/media/Icon_MoveSpeed.svg": "/Project-Mathematically-Correct/static/media/Icon_MoveSpeed.feb91585e73ab43bc242.svg",
@@ -88,6 +93,7 @@
     "static/media/Icon_AttackRange.svg": "/Project-Mathematically-Correct/static/media/Icon_AttackRange.ac546eb99abc61d35516.svg",
     "static/media/Verdant_Barrier_item_HD.webp": "/Project-Mathematically-Correct/static/media/Verdant_Barrier_item_HD.838ac4e61bcfc155e7d3.webp",
     "static/media/Sheen_item_HD.webp": "/Project-Mathematically-Correct/static/media/Sheen_item_HD.90b5effe917115910f25.webp",
+    "static/media/Glowing_Mote_item_HD.webp": "/Project-Mathematically-Correct/static/media/Glowing_Mote_item_HD.14561db68062148eb4ef.webp",
     "static/media/Oblivion_Orb_item_HD.webp": "/Project-Mathematically-Correct/static/media/Oblivion_Orb_item_HD.05f174bcfb30d74435f4.webp",
     "static/media/Lost_Chapter_item_HD.webp": "/Project-Mathematically-Correct/static/media/Lost_Chapter_item_HD.c27e5d10e1b5af606396.webp",
     "static/media/Catalyst_of_Aeons_item_HD.webp": "/Project-Mathematically-Correct/static/media/Catalyst_of_Aeons_item_HD.08ade2d58d4c8e82a89f.webp",
@@ -121,12 +127,12 @@
     "static/media/Icon_Health.svg": "/Project-Mathematically-Correct/static/media/Icon_Health.8189f10eaaeac888067d.svg",
     "static/media/Icon_CriticalStrikeChance.svg": "/Project-Mathematically-Correct/static/media/Icon_CriticalStrikeChance.ce7feca51c9fdf9411b0.svg",
     "static/media/Icon_Mana.svg": "/Project-Mathematically-Correct/static/media/Icon_Mana.b4229e663133e9c06403.svg",
-    "main.ece5cf07.css.map": "/Project-Mathematically-Correct/static/css/main.ece5cf07.css.map",
-    "main.a4594a75.js.map": "/Project-Mathematically-Correct/static/js/main.a4594a75.js.map",
-    "787.87e96488.chunk.js.map": "/Project-Mathematically-Correct/static/js/787.87e96488.chunk.js.map"
+    "main.e63164da.css.map": "/Project-Mathematically-Correct/static/css/main.e63164da.css.map",
+    "main.bc2928ce.js.map": "/Project-Mathematically-Correct/static/js/main.bc2928ce.js.map",
+    "787.47e28863.chunk.js.map": "/Project-Mathematically-Correct/static/js/787.47e28863.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.ece5cf07.css",
-    "static/js/main.a4594a75.js"
+    "static/css/main.e63164da.css",
+    "static/js/main.bc2928ce.js"
   ]
 }
