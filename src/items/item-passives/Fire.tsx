@@ -41,7 +41,6 @@ export class Fire extends Passive {
 			//	break;
 			case PassiveTrigger.OnAbilityDamage:
 				if (this.load.currentStacks > 0) {
-
 				//	console.log("proc'd " + this.passiveName);
 					let damage: number = this.FLATDAMAGE + statBuild!.getTotalStat(Stat.AbilityPower) * this.APRATIO;
 
@@ -60,7 +59,7 @@ export class Fire extends Passive {
 
 						damageInst!.targetChamp.handleDamageInst(damageInst1, time!);
 					}
-
+					this.load.currentStacks = 0;
 				}
 				break;
 		}

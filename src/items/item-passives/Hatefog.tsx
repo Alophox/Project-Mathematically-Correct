@@ -18,22 +18,33 @@ export class Hatefog extends Passive {
 
 	static DURATION = 3;
 	private COOLDOWN = 3;
+	private cooldownTime = 0;
 	/**How many seconds between damage procs*/
 	static PERIOD = 0.25;
 
 	public trigger(trigger: PassiveTrigger, sourceChampion?: Champion, time?: number, damageInst?: DamageInstance): void {
 		let statBuild = sourceChampion!.statBuild;
-		if (trigger === PassiveTrigger.OnAbilityDamage) {
-			let damage: number = this.FLATDAMAGE + statBuild!.getTotalStat(Stat.AbilityPower) * this.APRATIO;
-			for (let i = 0; i < (Hatefog.DURATION / Hatefog.PERIOD); i++) {
-				let damageInst1 = new DamageInstance(damageInst!.sourceChamp, damageInst!.targetChamp, this.passiveName, DamageType.Magic, damage, time!, damageInst!.castInstance, DamageTag.Item);
-				damageInst1.hitDelay = i * Hatefog.PERIOD;
-				this.addDmgAndPenShares(damage, this.passiveName, damageInst1, statBuild!);
+		switch (trigger) {
+			case PassiveTrigger.OnAbilityDamage:
+				if (this.cooldownTime <= time!) {
+					let damage: number = this.FLATDAMAGE + statBuild!.getTotalStat(Stat.AbilityPower) * this.APRATIO;
+					for (let i = 0; i < (Hatefog.DURATION / Hatefog.PERIOD); i++) {
+						let damageInst1 = new DamageInstance(damageInst!.sourceChamp, damageInst!.targetChamp, this.passiveName, DamageType.Magic, damage, time!, damageInst!.castInstance, DamageTag.Item);
+						damageInst1.hitDelay = i * Hatefog.PERIOD;
+						this.addDmgAndPenShares(damage, this.passiveName, damageInst1, statBuild!);
 
-				damageInst!.targetChamp.handleDamageInst(damageInst1, time!);
-			}
-			damageInst!.targetChamp.addBuff(new HatefogDebuff(this.primarySource, time!, damageInst!.sourceChamp), damageInst!.sourceChamp.championName);
+						damageInst!.targetChamp.handleDamageInst(damageInst1, time!);
+					}
+					damageInst!.targetChamp.addBuff(new HatefogDebuff(this.primarySource, time!, damageInst!.sourceChamp), damageInst!.sourceChamp.championName);
+					this.cooldownTime = time! + this.COOLDOWN;
+				}
+				
+				break;
+			case PassiveTrigger.Reset:
+				this.cooldownTime = 0;
+				break;
 		}
+
 	}
 
 	DescriptionElement = (statBuild?: StatBuild) => {
