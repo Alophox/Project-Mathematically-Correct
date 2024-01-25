@@ -13,7 +13,7 @@ export abstract class Riftmaker extends Item {
 	static image = "Riftmaker_item.webp";
 	static type = ItemType.Legendary;
 	static stats = new Map<Stat, number>([
-		[Stat.Cost, 3000],
+		[Stat.Cost, 3100],
 		[Stat.AbilityPower, 80],
 		[Stat.Health, 350],
 		[Stat.AbilityHaste, 15],

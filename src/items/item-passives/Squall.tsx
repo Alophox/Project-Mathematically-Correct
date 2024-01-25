@@ -10,11 +10,11 @@ export class Squall extends Passive {
 	passiveName = "Squall";
 	static MELEEFLATMINDAMAGE = 100;
 	static MELEEFLATMAXDAMAGE = 200;
-	static MELEEAPRATIO = .3;
+	static MELEEAPRATIO = .2;
 
 	static RANGEFLATMINDAMAGE = 75;
 	static RANGEFLATMAXDAMAGE = 150;
-	static RANGEAPRATIO = .225;
+	static RANGEAPRATIO = .15;
 
 	static DELAY = 2;
 

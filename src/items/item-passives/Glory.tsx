@@ -28,7 +28,7 @@ export class Glory extends Passive {
 
 
 	public static MAXSTACKS = 25;
-	public static INITIALSTACKS = 25;
+	public static INITIALSTACKS = 0;
 
 	private prop;
 	constructor(primarySource: string) {

@@ -12,7 +12,7 @@ export class Hypershot extends Passive {
 
 	static DURATION = 6;
 
-	TRIGGERRANGE = 700;
+	TRIGGERRANGE = 600;
 	//TRIGGERTARGETTING = Targeting.SkillShot;
 	//TRIGGERCC = CC.Immobilizing | CC.Slow;
 

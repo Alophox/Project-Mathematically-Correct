@@ -904,7 +904,7 @@ export abstract class Champion {
 	 * @param source
 	 */
 	public addBuff(buff: Passive, source?:string): boolean {
-		console.log(buff.passiveName);
+		//console.log(buff.passiveName);
 
 		if (source === undefined)
 			source = "any";
@@ -917,7 +917,7 @@ export abstract class Champion {
 			this.buffBar.get(source)!.get(buff.passiveName)!.reconcile(buff);
 			return false;
 		} else { //else add cause its new
-			console.log("added buff");
+			//console.log("added buff");
 			this.buffBar.get(source)!.set(buff.passiveName, buff);
 			return true;
 		}

@@ -208,7 +208,7 @@ export class Ahri extends Champion{
 			RANK1DURATION: 1.2,
 			RANKUPDURATION: 0.2,
 
-			CD: 14,
+			CD: 12,
 			CASTTIME: .25,
 			PROJSPEED: 1550,
 			PROJRANGE: 1000,

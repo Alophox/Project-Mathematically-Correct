@@ -15,7 +15,7 @@ export class Focus extends Passive {
 	static DURATION = 3;
 
 	COOLDOWN = 30;
-	TRIGGERRANGE = 700;
+	REVEALRADIUS = 1400;
 	//TRIGGERTARGETTING = Targeting.SkillShot;
 	//TRIGGERCC = CC.Immobilizing | CC.Slow;
 
@@ -38,7 +38,7 @@ export class Focus extends Passive {
 		
 		return (
 			<span>
-				Triggering Hypershot will grant vision of the area 1200 units around the target and apply Hypershot's debuff to enemy champions within the area revealed for {Focus.DURATION} seconds({this.COOLDOWN * (1 - (statBuild?.getCDR(CDRType.Item) ?? 0))}s <StatIcon stat={Stat.Cooldown} /> cooldown).
+				Triggering Hypershot will grant vision of the area {this.REVEALRADIUS} units around the target and apply Hypershot's debuff to enemy champions within the area revealed for {Focus.DURATION} seconds({this.COOLDOWN * (1 - (statBuild?.getCDR(CDRType.Item) ?? 0))}s <StatIcon stat={Stat.Cooldown} /> cooldown).
 			</span>
 		);
 	}
