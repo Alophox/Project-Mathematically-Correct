@@ -9,8 +9,8 @@ import { Load } from "./Load";
 export class Fire extends Passive {
 	passiveName = "Fire";
 	//additionalTip = "Echo doesn't proc when the Ability's damage is fully shielded.";
-	APRATIO = .08;
-	FLATDAMAGE = 40;
+	APRATIO = .04;
+	FLATDAMAGE = 45;
 	EXTRADAMAGERATIO = .35;
 	//COOLDOWN = 10;
 	//COOLDOWNREDUCTION = .5;

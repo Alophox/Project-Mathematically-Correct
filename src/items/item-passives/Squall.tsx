@@ -8,12 +8,14 @@ import { Passive, PassiveTrigger } from "../Passive";
 
 export class Squall extends Passive {
 	passiveName = "Squall";
-	static MELEEFLATMINDAMAGE = 100;
-	static MELEEFLATMAXDAMAGE = 200;
+	//static MELEEFLATMINDAMAGE = 100;
+	//static MELEEFLATMAXDAMAGE = 200;
+	static MELEEFLATDAMAGE = 140;
 	static MELEEAPRATIO = .2;
 
-	static RANGEFLATMINDAMAGE = 75;
-	static RANGEFLATMAXDAMAGE = 150;
+	//static RANGEFLATMINDAMAGE = 75;
+	//static RANGEFLATMAXDAMAGE = 150;
+	static RANGEFLATDAMAGE = 105;
 	static RANGEAPRATIO = .15;
 
 	static DELAY = 2;
@@ -23,20 +25,22 @@ export class Squall extends Passive {
 	}
 
 	DescriptionElement = (statBuild?: StatBuild) => {
-		let meleeFlatDamage = statBuild != undefined ? this.LevelScaler(Squall.MELEEFLATMINDAMAGE, Squall.MELEEFLATMAXDAMAGE, statBuild?.champLevel) : 0;
-		let rangeFlatDamage = statBuild != undefined ? this.LevelScaler(Squall.RANGEFLATMINDAMAGE, Squall.RANGEFLATMAXDAMAGE, statBuild?.champLevel) : 0;
+		//let meleeFlatDamage = statBuild !== undefined ? this.LevelScaler(Squall.MELEEFLATMINDAMAGE, Squall.MELEEFLATMAXDAMAGE, statBuild?.champLevel) : 0;
+		let meleeFlatDamage = statBuild !== undefined ? Squall.MELEEFLATDAMAGE : 0;
+		//let rangeFlatDamage = statBuild !== undefined ? this.LevelScaler(Squall.RANGEFLATMINDAMAGE, Squall.RANGEFLATMAXDAMAGE, statBuild?.champLevel) : 0;
+		let rangeFlatDamage = statBuild !== undefined ? Squall.RANGEFLATDAMAGE : 0;
 
 		let meleeAPDamage = (Squall.MELEEAPRATIO * (statBuild?.getTotalStat(Stat.AbilityPower) ?? 0));
 		let rangeAPDamage = (Squall.RANGEAPRATIO * (statBuild?.getTotalStat(Stat.AbilityPower) ?? 0));
 
-		let damage: number = statBuild != undefined ? (statBuild.champRangeType == RangeType.Melee ? meleeFlatDamage + meleeAPDamage : rangeFlatDamage + rangeAPDamage): 0;
+		let damage: number = statBuild != undefined ? (statBuild.champRangeType === RangeType.Melee ? meleeFlatDamage + meleeAPDamage : rangeFlatDamage + rangeAPDamage): 0;
 		return (
 			<span>
 				After {Squall.DELAY} seconds, Squall damages the target, dealing{" "}
 				<span className="TextMagic">
 					{this.EnhancedText(this.FloatPrecision(damage, 2) + " = ", statBuild)}(
-					<span className="Level">
-						{this.RangeSelectorOutput(Squall.MELEEFLATMINDAMAGE + " to " + Squall.MELEEFLATMAXDAMAGE, Squall.RANGEFLATMINDAMAGE + " to " + Squall.RANGEFLATMAXDAMAGE, statBuild?.champRangeType)} <TextIcon iconName={"Level"} /> (based on level) {this.EnhancedText("(" + this.FloatPrecision(statBuild?.champRangeType == RangeType.Melee ? meleeFlatDamage : rangeFlatDamage, 2) + ")", statBuild)}
+					<span className="Base">
+						{this.RangeSelectorOutput(Squall.MELEEFLATDAMAGE, Squall.RANGEFLATDAMAGE, statBuild?.champRangeType)} {this.EnhancedText("(" + this.FloatPrecision(statBuild?.champRangeType === RangeType.Melee ? meleeFlatDamage : rangeFlatDamage, 2) + ")", statBuild)}
 					</span>{" "}
 					<span className={Stat[Stat.AbilityPower]}>
 						+ {this.RangeSelectorOutput((Squall.MELEEAPRATIO * 100) + "%", (Squall.RANGEAPRATIO * 100) + "%", statBuild?.champRangeType)} <StatIcon stat={Stat.AbilityPower} /> {this.EnhancedText("(" + this.FloatPrecision(statBuild?.champRangeType == RangeType.Melee ? meleeAPDamage : rangeAPDamage, 2) + ")", statBuild)}
@@ -73,9 +77,10 @@ export class SquallDebuff extends Passive {
 				//console.log("squall fired " + (time! / TICKTIME).toFixed(0));
 				let damage: number = 0;
 				//flat, scaling with level
-				damage += (this.sourceChamp.rangeType == RangeType.Melee ? this.LevelScaler(Squall.MELEEFLATMINDAMAGE, Squall.MELEEFLATMAXDAMAGE, this.sourceChamp.level) : this.LevelScaler(Squall.RANGEFLATMINDAMAGE, Squall.RANGEFLATMAXDAMAGE, this.sourceChamp.level));
+				//damage += (this.sourceChamp.rangeType === RangeType.Melee ? this.LevelScaler(Squall.MELEEFLATMINDAMAGE, Squall.MELEEFLATMAXDAMAGE, this.sourceChamp.level) : this.LevelScaler(Squall.RANGEFLATMINDAMAGE, Squall.RANGEFLATMAXDAMAGE, this.sourceChamp.level));
+				damage += (this.sourceChamp.rangeType === RangeType.Melee ? Squall.MELEEFLATDAMAGE : Squall.RANGEFLATDAMAGE);
 				//ratio
-				damage += (this.sourceChamp.rangeType == RangeType.Melee ? Squall.MELEEAPRATIO : Squall.RANGEAPRATIO) * this.sourceChamp.statBuild!.getTotalStat(Stat.AbilityPower);
+				damage += (this.sourceChamp.rangeType === RangeType.Melee ? Squall.MELEEAPRATIO : Squall.RANGEAPRATIO) * this.sourceChamp.statBuild!.getTotalStat(Stat.AbilityPower);
 
 
 				let damageInst1 = new DamageInstance(this.sourceChamp, sourceChampion!, this.passiveName, DamageType.Magic, damage, time!, -1, DamageTag.Item);

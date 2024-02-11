@@ -9,8 +9,8 @@ import { Passive, PassiveTrigger } from "../Passive";
 
 export class Supersonic extends Passive {
 	passiveName = "Supersonic";
-	APRATIO = .15;
-	FLATDAMAGE = 125;
+	APRATIO = .10;
+	FLATDAMAGE = 100;
 	COOLDOWN = 40;
 	//BUFFDURATION = 1.5;
 	//MSRATIO = .3;

@@ -40,7 +40,7 @@ export class Spellblade extends Passive {
 			BASEADRATIO: 1,
 		},
 		lichBane: {
-			BASEADRATIO: 1,
+			BASEADRATIO: .75,
 			APRATIO: .5,
 			ASBUFF: .5,
 		}

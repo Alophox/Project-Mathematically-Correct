@@ -12,7 +12,7 @@ export abstract class Malignance extends Item {
 	static image = "Malignance_item_HD.webp"
 	static type = ItemType.Legendary;
 	static stats = new Map<Stat, number>([
-		[Stat.Cost, 2800],
+		[Stat.Cost, 2700],
 		[Stat.AbilityPower, 80],
 		[Stat.Mana, 600],
 		[Stat.AbilityHaste, 20],

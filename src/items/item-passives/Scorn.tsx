@@ -21,7 +21,7 @@ export class Scorn extends Passive {
 			<span>
 				Gain{" "}
 				<span className={Stat[Stat.UltimateAbilityHaste]}>
-					{this.UltAbilityHaste} <StatIcon stat={Stat.UltimateAbilityHaste} /> Ultimate Ability Haste.
+					{this.UltAbilityHaste} <StatIcon stat={Stat.UltimateAbilityHaste} /> Ultimate Ability Haste
 				</span>.
 			</span>
 		);

@@ -11,11 +11,11 @@ export class Hatefog extends Passive {
 	additionalTip = "Only one zone can be made every 3 seconds per Champion hit. Currently damage caused by the shred is not tracked as damage from this item."
 	//following are total over duration
 	private FLATDAMAGE = 15;
-	private APRATIO = .015;
+	private APRATIO = .0125;
 
-	static BASEMRSHRED = 6;
-	static MAXMRSHRED = 12;
-
+	//static BASEMRSHRED = 6;
+	//static MAXMRSHRED = 12;
+	static MRSHRED = 10;
 	static DURATION = 3;
 	private COOLDOWN = 3;
 	private cooldownTime = 0;
@@ -63,10 +63,10 @@ export class Hatefog extends Passive {
 					) magic damage{" "}
 				</span>
 				every {Hatefog.PERIOD} seconds and shreds their{" "}
-				<span className={Stat[Stat.MagicResist]}>
+				<span className={Stat[Stat.MagicPenetration]}>
 					magic resist by{" "}
-					<span className="Level">
-						{Hatefog.BASEMRSHRED} to {Hatefog.MAXMRSHRED} <TextIcon iconName={"Level"} /> (based on level)
+					<span className="Base">
+						{Hatefog.MRSHRED}
 					</span>
 				</span>
 			</span>
@@ -95,7 +95,8 @@ class HatefogDebuff extends Passive {
 		switch (trigger) {
 			case PassiveTrigger.ShredStatFlat:
 				if ((time!) !== this.endTime) {
-					let MRShred = -1 * this.LevelScaler(Hatefog.BASEMRSHRED, Hatefog.MAXMRSHRED, this.sourceChamp.level);
+					//let MRShred = -1 * this.LevelScaler(Hatefog.BASEMRSHRED, Hatefog.MAXMRSHRED, this.sourceChamp.level);
+					let MRShred = -1 * Hatefog.MRSHRED;
 					/**@todo do shred properly to track damage caused by it*/
 					sourceChampion!.statBuild!.addStatShare(Stat.MagicResist, MRShred, false, StatMathType.Flat, this.primarySource, this.passiveName);
 				}

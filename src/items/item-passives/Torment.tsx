@@ -34,7 +34,7 @@ export class Torment extends Passive {
 				<span className="TextMagic">
 					<span className="Health">
 						+ {this.FloatPrecision(Torment.TARGETHEALTHRATIO*100, 1)}% target's <StatIcon stat={Stat.Health} /> Max Health
-					</span>
+					</span>{" " }
 					 magic damage{" "}
 				</span>
 				every {Torment.PERIOD} seconds over {Torment.DURATION} seconds.

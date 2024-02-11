@@ -14,8 +14,8 @@ export abstract class LudensCompanion extends Item {
 	static image = "Luden's_Companion_item_HD.webp"
 	static type = ItemType.Legendary;
 	static stats = new Map<Stat, number>([
-		[Stat.Cost, 3000],
-		[Stat.AbilityPower, 90],
+		[Stat.Cost, 2900],
+		[Stat.AbilityPower, 95],
 		[Stat.Mana, 600],
 		[Stat.AbilityHaste, 20],
 		

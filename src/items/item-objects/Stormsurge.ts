@@ -13,7 +13,7 @@ export abstract class Stormsurge extends Item {
 	static type = ItemType.Legendary;
 	static stats = new Map<Stat, number>([
 		[Stat.Cost, 2900],
-		[Stat.AbilityPower, 90],
+		[Stat.AbilityPower, 95],
 		[Stat.MagicPenetrationFlat, 10],
 		[Stat.MoveSpeedPercent, .05],
 	]);

@@ -39,14 +39,14 @@ export abstract class ArchangelsStaff extends UpgradeableItem {
 	static get stats() {
 		if (ManaCharge.INITIALSTACKS < ManaCharge.MAXSTACKS) {
 			return new Map<Stat, number>([
-				[Stat.Cost, 3000],
+				[Stat.Cost, 1900],
 				[Stat.AbilityPower, 80],
 				[Stat.Mana, 600],
 				[Stat.AbilityHaste, 20],
 			]);
 		} else {
 			return new Map<Stat, number>([
-				[Stat.Cost, 3000],
+				[Stat.Cost, 1900],
 				[Stat.AbilityPower, 80],
 				[Stat.Mana, 1000],
 				[Stat.AbilityHaste, 20],
