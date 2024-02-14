@@ -176,11 +176,11 @@ export class Spellblade extends Passive {
 						<span className="TextMagic">
 							{this.EnhancedText(damage + " = ", statBuild)}(
 							<span className={Stat[Stat.AttackDamage]}>
-								{this.props.lichBane.BASEADRATIO * 100}% <StatIcon stat={Stat.AttackDamage} /> Base Attack Damage{this.EnhancedText(" (" + damage + ")", statBuild)}
+								{this.props.lichBane.BASEADRATIO * 100}% <StatIcon stat={Stat.AttackDamage} /> Base Attack Damage{this.EnhancedText(" (" + (this.props.lichBane.BASEADRATIO * (statBuild?.getBaseStat(Stat.AttackDamage) ?? 0)) + ")", statBuild)}
 							</span>
 							{" "}
 							<span className={Stat[Stat.AbilityPower]}>
-								+ {this.props.lichBane.APRATIO * 100}% <StatIcon stat={Stat.AbilityPower} /> Ability Power{this.EnhancedText(" (" + damage + ")", statBuild)}
+								+ {this.props.lichBane.APRATIO * 100}% <StatIcon stat={Stat.AbilityPower} /> Ability Power{this.EnhancedText(" (" + (this.props.lichBane.APRATIO * (statBuild?.getTotalStat(Stat.AbilityPower) ?? 0)) + ")", statBuild)}
 							</span>
 							) magic damage{" "}
 						</span>

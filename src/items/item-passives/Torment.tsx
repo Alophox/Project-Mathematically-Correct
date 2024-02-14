@@ -33,7 +33,7 @@ export class Torment extends Passive {
 				Dealing Ability damage burns enemies for{" "}
 				<span className="TextMagic">
 					<span className="Health">
-						+ {this.FloatPrecision(Torment.TARGETHEALTHRATIO*100, 1)}% target's <StatIcon stat={Stat.Health} /> Max Health
+						{this.FloatPrecision(Torment.TARGETHEALTHRATIO*100, 1)}% target's <StatIcon stat={Stat.Health} /> Max Health
 					</span>{" " }
 					 magic damage{" "}
 				</span>
@@ -80,7 +80,7 @@ class TormentBurn extends Passive {
 	}
 
 	public reconcile(otherPassive: this):boolean {
-		//this.endTime = otherPassive.endTime;
+		this.startTime = otherPassive.startTime;
 		return true;
 	}
 
