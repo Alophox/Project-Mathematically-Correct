@@ -98,7 +98,7 @@ export const BuildPanel: React.FC<BuildPanelProps> = ({ allyChamp, enemyChamp, d
 	}
 
 	function updateBuilds() {
-		enemyBuild.current.update(enemyChamp ?? defaultChamp, allyChamp ?? defaultChamp)
+		enemyBuild.current.update(enemyChamp ?? defaultChamp, allyChamp ?? defaultChamp);
 		builds.forEach((build) => {
 			build.update(allyChamp ?? defaultChamp, enemyChamp ?? defaultChamp);
 		});
@@ -118,6 +118,7 @@ export const BuildPanel: React.FC<BuildPanelProps> = ({ allyChamp, enemyChamp, d
 	 * turns generatedBuilds into champBuilds in refBuilds
 	 */
 	function generatedToChampBuild() {
+		enemyBuild.current.update(enemyChamp ?? defaultChamp, allyChamp ?? defaultChamp);
 		let newBuilds: Array<ChampBuildObject> = new Array<ChampBuildObject>();
 		for (let i = 0; i < generatedBuilds.length; i++) {
 
@@ -280,6 +281,7 @@ export const BuildPanel: React.FC<BuildPanelProps> = ({ allyChamp, enemyChamp, d
 					Ally Builds
 					<button className={"Inactive"}
 						onClick={() => {
+							enemyBuild.current.update(enemyChamp ?? defaultChamp, allyChamp ?? defaultChamp);
 							//insert at beginning or end depending on current sort direction
 							setBuilds(
 								sortAsc ?

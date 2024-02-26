@@ -29,14 +29,14 @@ export class Madness extends Passive {
 				break;
 			case PassiveTrigger.OnDamageHit:
 				if (damageInst?.instName !== this.passiveName && this.currentStacks > 0) {
-					if (this.currentStacks < Madness.MAXSTACKS) {
+					//if (this.currentStacks < Madness.MAXSTACKS) {
 						//modify current instance
 						let extraDamage = damageInst!.preMitigation * this.currentStacks * this.DAMAGERATIOPERSTACK;
 						damageInst!.addShare(extraDamage, this.primarySource, this.passiveName);
 						damageInst!.addPreMitigationDamage(extraDamage);
 
 						//damageInst!.addTotalShare(, this.primarySource, this.passiveName);
-					}
+					//}
 				}
 				break;
 			case PassiveTrigger.OnTick:
@@ -46,7 +46,7 @@ export class Madness extends Passive {
 				} else if (((time! - this.startTime) % this.STACKDURATION) < TICKTIME) {
 					if (this.currentStacks < Madness.MAXSTACKS) {
 						this.currentStacks++;
-						if (this.currentStacks == Madness.MAXSTACKS) {
+						if (this.currentStacks === Madness.MAXSTACKS) {
 							this.endTime = time! + this.MAXDURATIONSTACKED;
 						}
 					}

@@ -5,14 +5,16 @@ import { PassiveTrigger } from "../items/Passive";
 import { TICKTIME } from "./ServerConstants";
 import { StatBuild } from "./StatBuild";
 import * as ChampionObjects from '../champions/champion-objects';
+import { Stat } from "../Stat";
 
 
 
 
 export class ChampBuildObject {
-	public statBuild: StatBuild = new StatBuild(new TargetDummy(), []);
-
 	public items: Array<{ item: Item | undefined }> = new Array<{ item: Item | undefined }>();
+	public statBuild: StatBuild = new StatBuild(new TargetDummy(), this.items);
+
+	
 ;
 	public key: number;
 	private isEnemy: boolean;
@@ -41,11 +43,13 @@ export class ChampBuildObject {
 		this.statBuild = new StatBuild(champObj, this.items);
 
 		//console.log(allyChamp.constructor.name + " " + allyChamp.level);
-
+		//if (!this.isEnemy)
+		//	console.log(target.championName + " " + target.statBuild?.getTotalStat(Stat.MagicResist));
+		//else
+		//	console.log("resisting");
 		/**@todo:add distance editor, or automatically use shortest range for a champion*/
 		let distance: number = 500;
 
-		/**@todo: add burst and dps ability prio editors*/
 		let allyBurstSequence: string = allyChamp.burstSequence;//"eqwarrr"";
 		let allyDPSPriority: string = allyChamp.dpsPriority;// "eqwra";
 

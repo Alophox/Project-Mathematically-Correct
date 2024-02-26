@@ -29,14 +29,14 @@ export class Suffering extends Passive {
 				break;
 			case PassiveTrigger.OnDamageHit:
 				if (damageInst?.instName !== this.passiveName && this.currentStacks > 0) {
-					if (this.currentStacks < Suffering.MAXSTACKS) {
+					//if (this.currentStacks < Suffering.MAXSTACKS) {
 						//modify current instance
 						let extraDamage = damageInst!.preMitigation * this.currentStacks * this.DAMAGERATIOPERSTACK;
 						damageInst!.addShare(extraDamage, this.primarySource, this.passiveName);
 						damageInst!.addPreMitigationDamage(extraDamage);
 
 						//damageInst!.addTotalShare(, this.primarySource, this.passiveName);
-					}
+					//}
 				}
 				break;
 			case PassiveTrigger.OnTick:
@@ -46,7 +46,7 @@ export class Suffering extends Passive {
 				} else if (((time! - this.startTime) % this.STACKDURATION) < TICKTIME) {
 					if (this.currentStacks < Suffering.MAXSTACKS) {
 						this.currentStacks++;
-						if (this.currentStacks == Suffering.MAXSTACKS) {
+						if (this.currentStacks === Suffering.MAXSTACKS) {
 							this.endTime = time! + this.MAXDURATIONSTACKED;
 						}
 					}
