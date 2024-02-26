@@ -29,7 +29,7 @@ export class Ahri extends Champion{
 		[Stat.AttackRange, 550],
 	]);
 	public readonly levelStats = new Map<Stat, number>([
-		[Stat.Health, 96],
+		[Stat.Health, 104],
 		[Stat.HealthRegen, .6],
 		[Stat.Mana, 25],
 		[Stat.ManaRegen, .8],
@@ -104,7 +104,7 @@ export class Ahri extends Champion{
 		Q: {
 			NAME: "Orb of Deception",
 
-			APRATIO: .45,
+			APRATIO: .5,
 			RANK1DMG: 40,
 			RANKUPDMG: 25,
 			CD: 7,

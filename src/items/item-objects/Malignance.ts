@@ -15,7 +15,7 @@ export abstract class Malignance extends Item {
 		[Stat.Cost, 2700],
 		[Stat.AbilityPower, 80],
 		[Stat.Mana, 600],
-		[Stat.AbilityHaste, 20],
+		[Stat.AbilityHaste, 25],
 		
 	]);
 	static components = new Array<Item>([

@@ -17,7 +17,7 @@ export abstract class LudensCompanion extends Item {
 		[Stat.Cost, 2900],
 		[Stat.AbilityPower, 95],
 		[Stat.Mana, 600],
-		[Stat.AbilityHaste, 20],
+		[Stat.AbilityHaste, 25],
 		
 	]);
 	static components = new Array<Item>([
