@@ -15,7 +15,7 @@ export abstract class Stormsurge extends Item {
 		[Stat.Cost, 2900],
 		[Stat.AbilityPower, 95],
 		[Stat.MagicPenetrationFlat, 10],
-		[Stat.MoveSpeedPercent, .05],
+		[Stat.MoveSpeedPercent, .08],
 	]);
 	static components = new Array<Item>([
 		AetherWisp,
